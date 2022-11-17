@@ -1,4 +1,4 @@
-#include "Tuile.hpp"
+#include "../hpp/Tuile.hpp"
 
 Tuile::Tuile(int tab[4][3] ): v1{tab[0]}, v2{tab[1]}, v3{tab[2]}, v4{tab[3]}{}
 

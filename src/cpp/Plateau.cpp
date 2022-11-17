@@ -1,4 +1,4 @@
-#include "Plateau.hpp"
+#include "../hpp/Plateau.hpp"
 
 bool corespondent (int* vd, int* vt){
     if (vd[0]==vt[2] && vd[1]==vt[1] && vd[2]==vt[0] ){
