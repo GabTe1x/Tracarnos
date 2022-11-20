@@ -1,25 +1,23 @@
 #include "../hpp/Plateau.hpp"
 
-bool corespondent (int* vd, int* vt){
-    if (vd[0]==vt[2] && vd[1]==vt[1] && vd[2]==vt[0] ){
-        return true;
-    }
-    return false;
-}
 
-bool Plateau::existeTuile(int x, int y){
+template <typename T>
+bool Plateau<T>::existeTuile(int x, int y){
     std::pair<int, int> coord (x, y);
     if ((this->tuiles).count(coord)>=0){
         return true;
     }else return false;
 }
-Tuile* Plateau::getTuile(int x, int y){
+
+template <typename T>
+T & Plateau<T>::getTuile(int x, int y){
     std::pair<int, int> coord (x, y);
     return this->tuiles[coord];
 }
 
 //Retourne x tel que le plateau rentre dans un carrer 2x*2x
-int Plateau::getTaille(){
+template <typename T>
+int Plateau<T>::getTaille(){
     int x=0;
     for (auto cood : this->tuiles){
         if (cood.first.first > x){
@@ -36,7 +34,8 @@ int Plateau::getTaille(){
     return x;
 }
 
-bool Plateau::peutPoser(Tuile* t, int x, int y){
+template <typename T>
+bool Plateau<T>::peutPoser(T & t, int x, int y){
     //Si le plateau est vide
     std::pair<int, int> coord (x, y);
     if (this->tuiles.empty()){
@@ -54,9 +53,9 @@ bool Plateau::peutPoser(Tuile* t, int x, int y){
     //cause du Boolean estColle (et de ma flemme)
 
     //On verifie que la pièce du dessus correspond bien
-    if (existeTuile(x, y+1)){
+    /*if (existeTuile(x, y+1)){
         estColle = true;
-        Tuile* tuileAuDessus = getTuile(x, y+1);
+        Tuile tuileAuDessus = getTuile(x, y+1);
         int* vd = tuileAuDessus->getValeur(3);
         int* vt =t->getValeur(1);
         if (!corespondent (vd, vt)){
@@ -66,7 +65,7 @@ bool Plateau::peutPoser(Tuile* t, int x, int y){
     //On verifie que la pièce de gauche correspond bien
     if (existeTuile(x+1, y)){
         estColle = true;
-        Tuile* tuileAuDessus = getTuile(x+1, y);
+        Tuile tuileAuDessus = getTuile(x+1, y);
         int* vd = tuileAuDessus->getValeur(4);
         int* vt =t->getValeur(2);
         if (!corespondent (vd, vt)){
@@ -76,7 +75,7 @@ bool Plateau::peutPoser(Tuile* t, int x, int y){
     //On verifie que la pièce du bas correspond bien
     if (existeTuile(x+1, y)){
         estColle = true;
-        Tuile* tuileAuDessus = getTuile(x+1, y);
+        Tuile tuileAuDessus = getTuile(x+1, y);
         int* vd = tuileAuDessus->getValeur(1);
         int* vt =t->getValeur(3);
         if (!corespondent (vd, vt)){
@@ -92,7 +91,7 @@ bool Plateau::peutPoser(Tuile* t, int x, int y){
         if (!corespondent (vd, vt)){
             return false;
         }       
-    }
+    }*/
     if (estColle){
         this->tuiles[coord]= t;
         return true;
