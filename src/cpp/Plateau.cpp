@@ -19,7 +19,7 @@ T & Plateau<T>::getTuile(int x, int y){
 template <typename T>
 int Plateau<T>::getTaille(){
     int x=0;
-    for (auto cood : this->tuiles){
+    for (T cood : this->tuiles){
         if (cood.first.first > x){
             x = cood.first.first;
         }else if (-cood.first.first < -x){
@@ -53,45 +53,18 @@ bool Plateau<T>::peutPoser(T & t, int x, int y){
     //cause du Boolean estColle (et de ma flemme)
 
     //On verifie que la pièce du dessus correspond bien
-    /*if (existeTuile(x, y+1)){
-        estColle = true;
-        Tuile tuileAuDessus = getTuile(x, y+1);
-        int* vd = tuileAuDessus->getValeur(3);
-        int* vt =t->getValeur(1);
-        if (!corespondent (vd, vt)){
-            return false;
-        }       
+    if (existeTuile(x, y+1)){
     }
     //On verifie que la pièce de gauche correspond bien
     if (existeTuile(x+1, y)){
-        estColle = true;
-        Tuile tuileAuDessus = getTuile(x+1, y);
-        int* vd = tuileAuDessus->getValeur(4);
-        int* vt =t->getValeur(2);
-        if (!corespondent (vd, vt)){
-            return false;
-        }       
     }
     //On verifie que la pièce du bas correspond bien
     if (existeTuile(x+1, y)){
-        estColle = true;
-        Tuile tuileAuDessus = getTuile(x+1, y);
-        int* vd = tuileAuDessus->getValeur(1);
-        int* vt =t->getValeur(3);
-        if (!corespondent (vd, vt)){
-            return false;
-        }       
     }
     //On verifie que la pièce de droite correspond bien
     if (existeTuile(x-1, y)){
-        estColle = true;
-        Tuile* tuileAuDessus = getTuile(x-1, y);
-        int* vd = tuileAuDessus->getValeur(2);
-        int* vt =t->getValeur(4);
-        if (!corespondent (vd, vt)){
-            return false;
-        }       
-    }*/
+    }
+
     if (estColle){
         this->tuiles[coord]= t;
         return true;
