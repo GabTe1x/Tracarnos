@@ -1,16 +1,19 @@
 #ifndef _TUILE
 #define _TUILE
 
-template< class T> class Tuile {
-    private:
+template<typename T>
+class Tuile {
+    public:
         T haut;
         T droite;
         T bas;
         T gauche;
 
     public:
-        Tuile(T h, T d, T b, T g);
+        Tuile(T h,T d,T b,T g);
         void tourne();
         T getValeur(int i);
 };
+#include "Tuile.tpp"
+
 #endif

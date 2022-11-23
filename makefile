@@ -1,6 +1,6 @@
 CPP=g++ --std=c++11 -Wall
 CCO=$(CPP) -c $<
-OBJ= Test.o Joueur.o Plateau.o Tuile.o
+OBJ= Test.o Joueur.o Plateau.o Dominos.o
 HPP=src/hpp/
 C=src/cpp/
 
@@ -14,7 +14,7 @@ Joueur.o : $(C)Joueur.cpp $(HPP)Joueur.hpp
 Plateau.o : $(C)Plateau.cpp $(HPP)Plateau.hpp
 	$(CCO)
 
-Tuile.o : $(C)Tuile.cpp $(HPP)Tuile.hpp
+Dominos.o : $(C)Dominos.cpp $(HPP)Dominos.hpp
 	$(CCO)
 
 Test.o : $(C)Test.cpp

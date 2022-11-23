@@ -2,14 +2,13 @@
 #define _DOMINOS
 
 #include "Tuile.hpp"
+#include <array>
 
-class Dominos
+class Dominos:public Tuile<std::array<int, 3>>
 {
-private:
-    Tuile<int[3]> &t;
 public:
-    Dominos(int h[3],int d[3],int b[3],int g[3]);
-    bool correspond(int cote[3],int myside);
+    Dominos(std::array<int, 3> h,std::array<int, 3> d,std::array<int, 3> b,std::array<int, 3>g);
+    bool correspond(std::array<int,3> cote,int myside);
 };
 
 

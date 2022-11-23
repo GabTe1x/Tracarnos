@@ -1,7 +1,8 @@
-#include "../hpp/Tuile.hpp"
-        
 template <typename T>
-Tuile<T>::Tuile(T h, T d, T b, T g):haut{h},droite{d},bas{b},gauche{g}{};
+Tuile<T>::Tuile(T h,T d,T b,T g):haut{h},droite{d},bas{b},gauche{g}
+{
+
+}
 
 template <typename T>
 void Tuile<T>::tourne(){
