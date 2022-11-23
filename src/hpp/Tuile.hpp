@@ -3,16 +3,15 @@
 
 template<typename T>
 class Tuile {
-    public:
-        T haut;
-        T droite;
-        T bas;
-        T gauche;
+    protected:
+        T & haut;
+        T & droite;
+        T & bas;
+        T & gauche;
 
-    public:
-        Tuile(T h,T d,T b,T g);
+        Tuile(T & h,T & d,T & b,T & g);
         void tourne();
-        T getValeur(int i);
+        T & getValeur(int i)const;
 };
 #include "Tuile.tpp"
 
