@@ -16,8 +16,7 @@ class Plateau{
         bool peutPoser(T & tuile, int x, int y);
         int getTaille();
         bool existeTuile(int x, int y);
-        T & getTuile(int x, int y);
-        
+        T & getTuile(int x, int y);   
     
 };
 #endif
