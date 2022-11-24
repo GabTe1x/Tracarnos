@@ -8,6 +8,7 @@ bool PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
     std::pair<int, int> coord (x, y);
     if (tuiles.empty()){
         tuiles[coord]=&tuile;
+        return true;
     }
     
     //Si le plateau n'est pas vide
@@ -15,26 +16,28 @@ bool PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
     if (existeTuile(x, y)){
         return false;
     }
-    bool estColle= false; //Verifier que la pièce est bien adjacente a une autre pièce
-    
     //TODO: Il y a surement un moyen de factoriser ça, mais j'ai pas trouvé a 
     //cause du Boolean estColle (et de ma flemme)
 
     //On verifie que la pièce du dessus correspond bien
     if (existeTuile(x, y+1)){
-     
+        if(!tuile.correspond(tuiles[std::pair<int,int>(x,y+1)]->getValeur(2),0))
+            return false;
     }
     //On verifie que la pièce de gauche correspond bien
-    if (existeTuile(x+1, y)){
-     
+    if (existeTuile(x-1, y)){
+        if(!tuile.correspond(tuiles[std::pair<int,int>(x-1,y)]->getValeur(1),3))
+            return false;
     }
     //On verifie que la pièce du bas correspond bien
-    if (existeTuile(x+1, y)){
-      
+    if (existeTuile(x, y-1)){
+        if(!tuile.correspond(tuiles[std::pair<int,int>(x,y-1)]->getValeur(0),2))
+            return false;
     }
     //On verifie que la pièce de droite correspond bien
-    if (existeTuile(x-1, y)){
-    
+    if (existeTuile(x+1, y)){
+        if(!tuile.correspond(tuiles[std::pair<int,int>(x+1,y)]->getValeur(3),1))
+            return false;
     }
-    return estColle;
+    return true;
 }

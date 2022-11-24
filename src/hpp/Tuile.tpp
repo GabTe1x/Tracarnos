@@ -4,25 +4,25 @@ Tuile<T>::Tuile(T & h,T & d,T & b,T & g):haut{h},droite{d},bas{b},gauche{g}{}
 template <typename T>
 void Tuile<T>::tourne(){
     T tmp;
-    tmp = this->haut;
-    this->haut = this->gauche;
-    this->gauche = this->bas;
-    this->bas = this->droite;
-    this->haut = tmp;    
+    tmp = haut;
+    haut = gauche;
+    gauche = bas;
+    bas = droite;
+    haut = tmp;    
 }
 
 template <typename T>
-T & Tuile<T>::getValeur(int i)const {
+T Tuile<T>::getValeur(int i)const {
     if (i==1){
-        return this->haut;
+        return haut;
     }
     else if (i==2){
-        return this->droite;
+        return droite;
     }
     else if (i==3){
-        return this->bas;
+        return bas;
     }
     else {
-        return this->gauche;
+        return gauche;
     }
 }

@@ -10,7 +10,7 @@ class Plateau{
         std::map<std::pair<int, int> , T* > tuiles;
         //Un dictionnaire. Les clées sont des paires représentants les
         //coordonnées de chaque Tuile. Les int peuvent être négatifs
-
+    public:
         Plateau();
         bool existeTuile(int x, int y);
         T & getTuile(int x, int y);       
