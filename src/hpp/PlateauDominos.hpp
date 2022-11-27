@@ -6,7 +6,10 @@
 
 class PlateauDominos:public Plateau <Dominos>{
     public:
+        //contructeur par défaut
         PlateauDominos();
-        bool peutPoser(Dominos & tuile, int x, int y);
+        //paramètre la tuile à tester et ça position x,y à laquelle on veut la poser
+        //résultat -1 peut pas, 0 première tuile sinon nombre de pts
+        int peutPoser(Dominos & tuile, int x, int y);
 };
 #endif

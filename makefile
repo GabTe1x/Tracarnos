@@ -1,12 +1,15 @@
 CPP=g++ --std=c++11 -Wall
 CCO=$(CPP) -c $<
-OBJ= Test.o Joueur.o PlateauDominos.o Dominos.o
+OBJ= Test.o Controleur.o Joueur.o PlateauDominos.o Dominos.o
 HPP=src/hpp/
 C=src/cpp/
 
 all : $(OBJ)
 	$(CPP) -o go $(OBJ)
 	./go
+
+Controleur.o : $(C)Controleur.cpp $(HPP)Controleur.hpp
+	$(CCO)
 
 Joueur.o : $(C)Joueur.cpp $(HPP)Joueur.hpp
 	$(CCO)

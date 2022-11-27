@@ -1,12 +1,17 @@
 #include "../hpp/Joueur.hpp"
 Joueur::Joueur(int id): score{0}, id{id}{}
 
-int Joueur::getScore()
+int Joueur::getScore()const
 {
     return score;
 }
 
-void Joueur::setScore(int n)
+void Joueur::addScore(int n)
 {
-    score=n;
+    score+=n;
+}
+
+int Joueur::getId()const
+{
+    return id;
 }

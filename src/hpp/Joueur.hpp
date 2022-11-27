@@ -8,7 +8,8 @@ class Joueur {
     
     public:
         Joueur(int id);
-        int getScore();
-        void setScore(int n);      
+        int getScore()const;
+        void addScore(int n);  
+        int getId()const;    
 };
 #endif
