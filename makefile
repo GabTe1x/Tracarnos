@@ -7,7 +7,6 @@ C=src/cpp/
 all : $(OBJ)
 	$(CPP) -o go $(OBJ)
 	./go
-
 Controleur.o : $(C)Controleur.cpp $(HPP)Controleur.hpp
 	$(CCO)
 

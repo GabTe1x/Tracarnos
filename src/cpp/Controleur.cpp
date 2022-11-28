@@ -1,8 +1,8 @@
 #include "../hpp/Controleur.hpp"
 
-Controleur::Controleur(int nbrJ,int nbrD):nbrDominos{nbrD},nbrJoueurs{nbrJ},plateau{}{};
+Controleur::Controleur(){};
 
-void Controleur::commencer()
+void Controleur::commencer(int j,int pioche)
 {
     // init random
     std::random_device dev;
@@ -10,60 +10,40 @@ void Controleur::commencer()
     std::uniform_int_distribution<std::mt19937::result_type> dist6(0,4);
 
     // initialisation des joueurs
-    for(int i =0;i< nbrJoueurs;i++)
+    for(int i =0;i< j;i++)
     {
-        Joueur j{i};
-        joueurs.push_back(j);
+        Joueur player{i};
+        plateau.ajouterJoueur(player);
     }
 
     // initialisation de la pioche de dominos
-    for(int i =0;i < nbrDominos;i++)
+    for(int i =0;i <= pioche;i++)
     {
         Dominos d{{(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)},
                   {(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)},
                   {(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)},
                   {(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)}};
-        pioche.push_back(d);
+        plateau.ajouteDominos(d);
     }
-
-    Dominos d{{(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)},
-                  {(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)},
-                  {(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)},
-                  {(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)}};
-    pioche.push_back(d);
-    plateau.peutPoser(d,5,5);
-}
-
-bool Controleur::jouer(Dominos &d,int x,int y){
-    int ret=plateau.peutPoser(d,x,y);
-    if(ret==-1)
-        return false;
-    joueurs.at(tour%nbrJoueurs).addScore(ret);
-    pioche.pop_back();
-    return true;
-}
-
-bool Controleur::finDePartie()const
-{
-    return pioche.empty();
+    plateau.peutPoser(plateau.getPioche(),5,5);
 }
 
 Joueur& Controleur::getVainqueur()
 {
-    int score=0;
-    int id=0;
-    for(Joueur &j:joueurs)
-    {
-        if(j.getScore()>score)
-        {
-            score=j.getScore();
-            id=j.getId();
-        }
-    }
-    return joueurs.at(id);
+    return plateau.getVainqueur();
 }
 
-Dominos& Controleur::getCurrent()
+Dominos& Controleur::getPioche()
 {
-    return pioche.at(pioche.size()-1);
+    return plateau.getPioche();
+}
+
+
+bool Controleur::jouer(int x,int y){
+    int ret=plateau.peutPoser(plateau.getPioche(),x,y);
+    if(ret==-1)
+        return false;
+    //joueurs.at(tour%nbrJoueurs).addScore(ret);
+    plateau.deffauser();
+    return true;
 }

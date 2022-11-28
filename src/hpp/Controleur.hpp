@@ -2,9 +2,7 @@
 #define _CONTROLEUR
 
 #include "PlateauDominos.hpp"
-#include "Dominos.hpp"
 #include "Joueur.hpp"
-#include <vector>
 #include <random>
 
 
@@ -16,28 +14,30 @@
     et 3 plateaux 
 */
     
-
 class Controleur {
     private:
-        int nbrDominos;
-        int nbrJoueurs;
         PlateauDominos plateau;
-        std::vector<Joueur> joueurs;
-        std::vector<Dominos> pioche;
-
         int tour =0; //Indique le joueur auquel c'est le tour de jouer
     
     public:
-        Controleur(int nbrJ,int nbrD);
-        void commencer();
+        Controleur();
+        /* initialise le modèle Dominos
+        @param j = nombre de joueurs
+        @param pioche = nombre de dominos*/
+        void commencer(int j,int pioche);
+
         // vérifie si la partie est terminé
         bool finDePartie()const;
+
         // récupère le vainqueur
         Joueur& getVainqueur();
-        // return -1 si tuile pas poser, 0 si fin de parti sinon 1
-        bool jouer(Dominos &d,int x,int y);
-        // return le dominos à jouer a ce tour
-        Dominos& getCurrent();
         
+        // @param x,y coordonnées ou poser la tuile courante
+        // return -1 si tuile pas poser, 0 plus de tuile sinon 1
+        bool jouer(int x,int y);
+
+        // récupère la tuile la plus haute de la pioche
+        Dominos& getPioche();
 };
+
 #endif

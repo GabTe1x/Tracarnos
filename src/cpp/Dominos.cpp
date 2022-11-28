@@ -1,14 +1,11 @@
 #include "../hpp/Dominos.hpp"
 
 
-Dominos::Dominos(std::array<int, 3> h,std::array<int, 3> d,std::array<int, 3> b,std::array<int, 3>g):Tuile(h,d,b,g)
-{
-    std::cout<<h[1]<<""<<b[1]<<""<<d[1]<<""<<g[1]<<std::endl;
-}
+Dominos::Dominos(std::array<int, 3> h,std::array<int, 3> d,std::array<int, 3> b,std::array<int, 3>g):Tuile(h,d,b,g){}
 
 Dominos::~Dominos()
 {
-    std::cout<<"Destruction dominos"<<std::endl;
+    //std::cout<<"Destruction dominos"<<std::endl;
 }
 
 bool Dominos::correspond(std::array<int,3>cote,int myside)

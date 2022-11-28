@@ -64,7 +64,9 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
     }
     if (estColle){
         this->tuiles[coord]=&tuile;
+        deffauser();
         return pts;
     }
     return -1;
 }
+
