@@ -30,6 +30,30 @@ T & Plateau<T>::getPioche()
 }
 
 template <typename T>
+std::array<int, 4>* Plateau<T>::getTaille(){
+    int maxx {0}; int maxy {0};int minx {0}; int miny {0};
+    for(std::pair<std::pair<int, int>,T*> it : tuiles){
+        // Accessing KEY from element pointed by it.
+        std::pair<int, int> paire = it.first;
+        if (minx>paire.first){
+            minx=paire.first;
+        }
+        if(miny>paire.second){
+            miny=paire.second;
+        }
+        if(maxx<paire.first){
+            maxx=paire.first;
+        }
+        if(maxy<paire.second){
+            maxy=paire.second;
+        }    
+    }
+    std::array<int, 4> v{ {maxx, minx, maxy, miny}};
+    return &v;
+}
+    
+
+template <typename T>
 void Plateau<T>::ajouterJoueur(Joueur & j)
 {
     joueurs.push_back(j);

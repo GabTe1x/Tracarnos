@@ -38,6 +38,8 @@ class Controleur {
 
         // récupère la tuile la plus haute de la pioche
         Dominos& getPioche();
+
+        PlateauDominos* getPlateau();
 };
 
 #endif

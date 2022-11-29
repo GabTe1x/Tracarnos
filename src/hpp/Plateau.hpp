@@ -32,6 +32,9 @@ class Plateau{
         // retourne la dernière carte de la pioche
         T & getPioche();
 
+        //renvois un tableau contenannt 4 valeurs: {maxx, minx, maxy, miny}
+        std::array<int, 4>* getTaille();
+
         // vérifie s'il reste une tuile à jouer
         bool finDePartie()const;
 

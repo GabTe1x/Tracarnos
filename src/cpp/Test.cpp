@@ -1,14 +1,34 @@
 #include <iostream>
+#include <vector>
+#include <array>
+#include "../hpp/Dominos.hpp"
+#include "../hpp/PlateauDominos.hpp"
 #include "../hpp/Controleur.hpp"
-
+void afficherPlateauDominos(Controleur* contr){
+    PlateauDominos* p = contr->getPlateau();
+    //renvois un tableau contenannt 4 valeurs: {maxx, minx, maxy, miny}
+    std::array<int, 4>* bornes = p->getTaille();
+    int x=bornes->at(0) - bornes->at(1);
+    int y=bornes->at(2) - bornes->at(3);
+    std::array<std::array<char, x>, y> tab;
+}
 
 int main(){
-    Controleur ctrl{};
-    ctrl.commencer(2,42);
-    std::array<int,3> one{1,2,3};
-    std::array<int,3> two{3,2,1};
-    Dominos d{one,one,one,one};
-    std::cout<<d.getValeur(1)[0]<<":"<<d.getValeur(1)[1]<<":"<<d.getValeur(1)[2]<<std::endl;
-    std::cout<<d.correspond(two,1)<<std::endl;
-    std::cout<<"Hello"<<std::endl;
+    std::cout << "Graphique (1) ou Terminal (2)?" << std::endl;
+    int num;
+    std::cin >> num;
+    if(num==2){
+        int joueurs;
+        std::cout << "Nombre de joueurs?" << std::endl;
+        std::cin >> joueurs;
+        int dominos;
+        std::cout << "Nombre de dominos?" << std::endl;
+        std::cin >> dominos;
+        Controleur* contr= new Controleur( );
+        contr->commencer(joueurs, dominos);
+        afficherPlateauDominos(contr);
+        
+        
+    }
 }
+

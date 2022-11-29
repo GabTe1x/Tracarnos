@@ -47,3 +47,7 @@ bool Controleur::jouer(int x,int y){
     plateau.deffauser();
     return true;
 }
+
+PlateauDominos* Controleur::getPlateau(){
+    return &plateau;
+}
