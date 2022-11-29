@@ -32,6 +32,12 @@ class Plateau{
         // retourne la dernière carte de la pioche
         T & getPioche();
 
+        // retourne nbr joueurs
+        int getNbrJoueurs()const;
+
+        // retourne joueur i
+        Joueur & getJoueur(int i);
+
         // vérifie s'il reste une tuile à jouer
         bool finDePartie()const;
 

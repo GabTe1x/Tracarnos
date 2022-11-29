@@ -43,7 +43,7 @@ bool Controleur::jouer(int x,int y){
     int ret=plateau.peutPoser(plateau.getPioche(),x,y);
     if(ret==-1)
         return false;
-    //joueurs.at(tour%nbrJoueurs).addScore(ret);
+    plateau.getJoueur(tour%plateau.getNbrJoueurs()).addScore(ret);
     plateau.deffauser();
     return true;
 }

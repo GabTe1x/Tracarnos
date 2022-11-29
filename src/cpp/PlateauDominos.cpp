@@ -19,9 +19,6 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
     }
 
     bool estColle= false;
-    //TODO: Il y a surement un moyen de factoriser ça, mais j'ai pas trouvé a 
-    //cause du Boolean estColle (et de ma flemme)
-
     //On verifie que la pièce du dessus correspond bien
     if (existeTuile(x, y+1)){
         estColle = true;

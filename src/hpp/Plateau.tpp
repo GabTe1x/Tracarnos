@@ -62,3 +62,15 @@ Joueur& Plateau<T>::getVainqueur()
     }
     return joueurs.at(id);
 }
+
+template <typename T>
+int Plateau<T>::getNbrJoueurs()const
+{
+    return joueurs.size();
+}
+
+template <typename T>
+Joueur & Plateau<T>::getJoueur(int i)
+{
+    return joueurs.at(i);
+}
