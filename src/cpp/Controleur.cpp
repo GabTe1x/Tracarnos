@@ -25,7 +25,7 @@ void Controleur::commencer(int j,int pioche)
                   {(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)}};
         plateau.ajouteDominos(d);
     }
-    plateau.peutPoser(plateau.getPioche(),5,5);
+    plateau.peutPoser(plateau.getPioche(),0,0);
 }
 
 Joueur& Controleur::getVainqueur()
@@ -50,4 +50,9 @@ bool Controleur::jouer(int x,int y){
 
 PlateauDominos* Controleur::getPlateau(){
     return &plateau;
+}
+
+std::ostream & operator <<( std::ostream& out, Controleur& x ) {
+    std::cout << "Plateau: \n " << *(x.getPlateau()) << std::endl;
+    return out ;
 }

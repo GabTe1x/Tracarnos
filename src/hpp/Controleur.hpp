@@ -41,5 +41,7 @@ class Controleur {
 
         PlateauDominos* getPlateau();
 };
+std::ostream& operator<<(std::ostream&, Controleur&);
+
 
 #endif

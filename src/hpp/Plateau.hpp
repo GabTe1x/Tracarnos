@@ -8,7 +8,7 @@
 
 template<typename T>
 class Plateau{
-    protected:
+    public:
         //joueurs participant au jeu
         std::vector<Joueur> joueurs;
 

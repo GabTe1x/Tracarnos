@@ -13,5 +13,7 @@ public:
     bool correspond(std::array<int,3> cote,int myside);
 };
 
+std::ostream & operator <<( std::ostream& out, Dominos& x );
+
 
 #endif
