@@ -10,7 +10,7 @@ void Controleur::commencer(int nbrJ,int pioche)
     std::mt19937 rng(dev());
     std::uniform_int_distribution<std::mt19937::result_type> dist6(0,4);
 
-    nombreDeJoueurs=j; 
+    nombreDeJoueurs=nbrJ; 
 
     // initialisation des joueurs
     for(int i =0;i< nbrJ;i++)
@@ -38,7 +38,7 @@ Joueur& Controleur::getVainqueur()
 }
 
 bool Controleur::finDePartie() const{
-    return plateau.finDePartie();
+    return plateau->finDePartie();
 }
 
 Dominos& Controleur::getPioche()
@@ -57,11 +57,11 @@ bool Controleur::jouer(int x,int y){
 }
 
 PlateauDominos* Controleur::getPlateau(){
-    return &plateau;
+    return plateau;
 }
 
 Joueur* Controleur::getJoueurActuel(){
-    return &(plateau.joueurs.at(tour % this->nombreDeJoueurs));
+    return plateau->joueurs.at(tour % this->nombreDeJoueurs);
 }
 
 std::ostream & operator <<( std::ostream& out, Controleur& x ) {

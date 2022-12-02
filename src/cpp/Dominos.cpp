@@ -29,3 +29,14 @@ int Dominos::getScore(int i){
         return gauche[0]+gauche[1]+gauche[2];
     }
 }
+
+std::ostream & operator <<( std::ostream& out, Dominos& x ) {
+    std::cout << 
+        "'" << x.getValeur(1).at(0) << x.getValeur(1).at(1) << x.getValeur(1).at(2) << "'\n"
+        << x.getValeur(4).at(2) << "---" << x.getValeur(2).at(0)<< "\n"
+        << x.getValeur(4).at(1) << "---" << x.getValeur(2).at(1)<< "\n"
+        << x.getValeur(4).at(0) << "---" << x.getValeur(2).at(2)<< "\n"
+        << "'" << x.getValeur(3).at(2) << x.getValeur(3).at(1) << x.getValeur(3).at(1) << "'\n"
+    << std::endl;
+    return out ;
+}
