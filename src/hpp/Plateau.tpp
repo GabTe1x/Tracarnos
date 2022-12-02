@@ -11,7 +11,7 @@ bool Plateau<T>::existeTuile(int x, int y)const
 }
 
 template <typename T>
-T & Plateau<T>::getTuile(int x, int y)const
+T * Plateau<T>::getTuile(int x, int y)const
 {
     std::pair<int, int> coord (x, y);
     return this->tuiles[coord];
@@ -24,7 +24,7 @@ bool Plateau<T>::finDePartie()const
 }
 
 template <typename T>
-T & Plateau<T>::getPioche()
+T* Plateau<T>::getPioche()
 {
     return pioche.at(pioche.size()-1);
 }
@@ -32,7 +32,7 @@ T & Plateau<T>::getPioche()
 template <typename T>
 void Plateau<T>::ajouterJoueur(Joueur & j)
 {
-    joueurs.push_back(j);
+    joueurs.push_back(&j);
 }
 
 template <typename T>
@@ -42,22 +42,22 @@ void Plateau<T>::deffauser()
 }
 
 template <typename T>
-void Plateau<T>::ajouteDominos(T &d)
+void Plateau<T>::ajouteTuile(T &t)
 {
-    pioche.push_back(d);
+    pioche.push_back(&t);
 }
 
 template <typename T>
-Joueur& Plateau<T>::getVainqueur()
+Joueur* Plateau<T>::getVainqueur()
 {
     int score=0;
     int id=0;
-    for(Joueur &j:joueurs)
+    for(Joueur *j:joueurs)
     {
-        if(j.getScore()>score)
+        if(j->getScore()>score)
         {
-            score=j.getScore();
-            id=j.getId();
+            score=j->getScore();
+            id=j->getId();
         }
     }
     return joueurs.at(id);
@@ -70,7 +70,7 @@ int Plateau<T>::getNbrJoueurs()const
 }
 
 template <typename T>
-Joueur & Plateau<T>::getJoueur(int i)
+Joueur * Plateau<T>::getJoueur(int i)
 {
     return joueurs.at(i);
 }

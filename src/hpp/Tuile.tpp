@@ -8,11 +8,11 @@ void Tuile<T>::tourne(){
     haut = gauche;
     gauche = bas;
     bas = droite;
-    haut = tmp;    
+    haut = tmp;
 }
 
 template <typename T>
-T Tuile<T>::getValeur(int i)const {
+T& Tuile<T>::getValeur(int i){
     if (i==1){
         return haut;
     }

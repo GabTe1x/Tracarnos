@@ -25,8 +25,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
         if(!tuile.correspond(tuiles[std::pair<int,int>(x,y+1)]->getValeur(2),0))
             return -1;
         else{ 
-            std::array<int,3> cote=tuile.getValeur(0);
-            pts=pts+cote[0]+cote[1]+cote[2];
+            pts+=tuile.getScore(0);
         }
     }
     //On verifie que la pièce de gauche correspond bien
@@ -35,8 +34,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
         if(!tuile.correspond(tuiles[std::pair<int,int>(x-1,y)]->getValeur(1),3))
             return -1;
         else{ 
-            std::array<int,3> cote=tuile.getValeur(3);
-            pts=pts+cote[0]+cote[1]+cote[2];
+            pts+=tuile.getScore(3);
         }
     }
     //On verifie que la pièce du bas correspond bien
@@ -45,8 +43,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
         if(!tuile.correspond(tuiles[std::pair<int,int>(x,y-1)]->getValeur(0),2))
             return -1;
         else{ 
-            std::array<int,3> cote=tuile.getValeur(2);
-            pts=pts+cote[0]+cote[1]+cote[2];
+            pts+=tuile.getScore(2);
         }
     }
     //On verifie que la pièce de droite correspond bien
@@ -55,8 +52,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
         if(!tuile.correspond(tuiles[std::pair<int,int>(x+1,y)]->getValeur(3),1))
             return -1;
         else{ 
-            std::array<int,3> cote=tuile.getValeur(1);
-            pts=pts+cote[0]+cote[1]+cote[2];
+            pts+=tuile.getScore(1);
         }
     }
     if (estColle){
