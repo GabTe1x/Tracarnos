@@ -18,6 +18,7 @@ class Controleur {
     private:
         PlateauDominos plateau;
         int tour =0; //Indique le joueur auquel c'est le tour de jouer
+        int nombreDeJoueurs;
     
     public:
         Controleur();
@@ -27,7 +28,7 @@ class Controleur {
         void commencer(int j,int pioche);
 
         // vérifie si la partie est terminé
-        bool finDePartie()const;
+        bool finDePartie() const;
 
         // récupère le vainqueur
         Joueur& getVainqueur();
@@ -40,6 +41,7 @@ class Controleur {
         Dominos& getPioche();
 
         PlateauDominos* getPlateau();
+        Joueur* getJoueurActuel();
 };
 std::ostream& operator<<(std::ostream&, Controleur&);
 
