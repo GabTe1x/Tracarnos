@@ -8,7 +8,7 @@
 
 template<typename T>
 class Plateau{
-    protected:
+    public:
         //joueurs participant au jeu
         std::vector<Joueur*> joueurs;
 
@@ -37,6 +37,9 @@ class Plateau{
 
         // retourne joueur i
         Joueur * getJoueur(int i);
+
+        //renvois un tableau contenannt 4 valeurs: {maxx, minx, maxy, miny}
+        std::array<int, 4>* getTaille();
 
         // vérifie s'il reste une tuile à jouer
         bool finDePartie()const;

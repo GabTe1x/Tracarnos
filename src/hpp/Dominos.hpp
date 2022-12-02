@@ -14,5 +14,7 @@ public:
     int getScore(int i);
 };
 
+std::ostream & operator <<( std::ostream& out, Dominos& x );
+
 
 #endif

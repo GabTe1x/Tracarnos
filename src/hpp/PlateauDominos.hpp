@@ -16,4 +16,5 @@ class PlateauDominos:public Plateau <Dominos>{
         //résultat -1 peut pas, 0 première tuile sinon nombre de pts
         int peutPoser(Dominos & tuile, int x, int y);
 };
+std::ostream & operator <<( std::ostream& out, PlateauDominos& x );
 #endif

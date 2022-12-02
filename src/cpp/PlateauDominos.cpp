@@ -63,3 +63,14 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
     return -1;
 }
 
+std::ostream & operator <<( std::ostream& out, PlateauDominos& x ) {
+    for(std::pair<std::pair<int, int>,Dominos*> it : x.tuiles){
+        // Accessing KEY from element pointed by it.
+        std::pair<int, int> paire = it.first;
+        Dominos* dom= it.second;
+        std::cout << "Domino. (x=: " << paire.first << "; y="<< paire.second << ")\n" << *dom << std::endl;
+    }
+    std::cout << "fin du plateau" << std::endl;
+    return out ;
+}
+
