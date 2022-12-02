@@ -1,21 +1,25 @@
 CPP=g++ --std=c++11 -Wall
 CCO=$(CPP) -c $<
-OBJ= Test.o Joueur.o Plateau.o Tuile.o
+OBJ= Test.o Controleur.o Joueur.o PlateauDominos.o Dominos.o
+HPP=src/hpp/
+C=src/cpp/
 
 all : $(OBJ)
-	$(CPP) -o go $(OBJ)
+	$(CPP) -o go $(OBJ) -lsfml-graphics -lsfml-window -lsfml-system
 	./go
-
-Joueur.o : Joueur.cpp Joueur.hpp
+Controleur.o : $(C)Controleur.cpp $(HPP)Controleur.hpp
 	$(CCO)
 
-Plateau.o : Plateau.cpp Plateau.hpp
+Joueur.o : $(C)Joueur.cpp $(HPP)Joueur.hpp
 	$(CCO)
 
-Tuile.o : Tuile.cpp Tuile.hpp
+PlateauDominos.o : $(C)PlateauDominos.cpp $(HPP)PlateauDominos.hpp
 	$(CCO)
 
-Test.o : Test.cpp
+Dominos.o : $(C)Dominos.cpp $(HPP)Dominos.hpp
+	$(CCO)
+
+Test.o : $(C)Test.cpp
 	$(CCO)
 
 clean :
