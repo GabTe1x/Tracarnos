@@ -10,14 +10,14 @@ template<typename T>
 class Plateau{
     public:
         //joueurs participant au jeu
-        std::vector<Joueur> joueurs;
+        std::vector<Joueur*> joueurs;
 
         //Un dictionnaire. Les clées sont des paires représentants les
         //coordonnées de chaque Tuile. Les int peuvent être négatifs
         std::map<std::pair<int, int> , T* > tuiles;
 
         //Pioche de  Tuile T a poser sur notre plateau
-        std::vector<T> pioche; 
+        std::vector<T*> pioche;
     public:
 
         // contructeur par défaut initialisation par controleur
@@ -27,10 +27,16 @@ class Plateau{
         bool existeTuile(int x, int y)const;
 
         // retourne la tuile posé sur le plateau a la case X,Y
-        T & getTuile(int x, int y)const;
+        T * getTuile(int x, int y)const;
 
         // retourne la dernière carte de la pioche
-        T & getPioche();
+        T * getPioche();
+
+        // retourne nbr joueurs
+        int getNbrJoueurs()const;
+
+        // retourne joueur i
+        Joueur * getJoueur(int i);
 
         //renvois un tableau contenannt 4 valeurs: {maxx, minx, maxy, miny}
         std::array<int, 4>* getTaille();
@@ -42,12 +48,12 @@ class Plateau{
         void deffauser();
 
         //retourne le joueur avec le plus de points
-        Joueur& getVainqueur();
+        Joueur* getVainqueur();
         
         // ajouter joueur à la liste de joueur (initialisation)
         void ajouterJoueur(Joueur & j);
         // ajouter dominos à la pioche (initialisation)
-        void ajouteDominos(T &d);
+        void ajouteTuile(T &t);
 };
 #include "Plateau.tpp"
 

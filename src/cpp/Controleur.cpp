@@ -1,9 +1,10 @@
 #include "../hpp/Controleur.hpp"
 
-Controleur::Controleur(){};
+Controleur::Controleur():plateau{}{};
 
-void Controleur::commencer(int j,int pioche)
+void Controleur::commencer(int nbrJ,int pioche)
 {
+    plateau=new PlateauDominos{};
     // init random
     std::random_device dev;
     std::mt19937 rng(dev());
@@ -12,27 +13,28 @@ void Controleur::commencer(int j,int pioche)
     nombreDeJoueurs=j; 
 
     // initialisation des joueurs
-    for(int i =0;i< j;i++)
+    for(int i =0;i< nbrJ;i++)
     {
-        Joueur player{i};
-        plateau.ajouterJoueur(player);
+        Joueur *player=new Joueur{i};
+        plateau->ajouterJoueur(*player);
     }
 
     // initialisation de la pioche de dominos
-    for(int i =0;i <= pioche;i++)
+    for(int cmpt =0;cmpt <= pioche;cmpt++)
     {
-        Dominos d{{(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)},
-                  {(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)},
-                  {(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)},
-                  {(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)}};
-        plateau.ajouteDominos(d);
+        std::array<int,3>c1{(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)};
+        std::array<int,3>c2{(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)};
+        std::array<int,3>c3{(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)};
+        std::array<int,3>c4{(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)};
+        Dominos *d=new Dominos{c1,c2,c3,c4};
+        plateau->ajouteTuile(*d);
     }
-    plateau.peutPoser(plateau.getPioche(),0,0);
+    plateau->peutPoser(*plateau->getPioche(),5,5);
 }
 
 Joueur& Controleur::getVainqueur()
 {
-    return plateau.getVainqueur();
+    return *plateau->getVainqueur();
 }
 
 bool Controleur::finDePartie() const{
@@ -41,16 +43,16 @@ bool Controleur::finDePartie() const{
 
 Dominos& Controleur::getPioche()
 {
-    return plateau.getPioche();
+    return *plateau->getPioche();
 }
 
 
 bool Controleur::jouer(int x,int y){
-    int ret=plateau.peutPoser(plateau.getPioche(),x,y);
+    int ret=plateau->peutPoser(*plateau->getPioche(),x,y);
     if(ret==-1)
         return false;
-    //joueurs.at(tour%nbrJoueurs).addScore(ret);
-    plateau.deffauser();
+    plateau->getJoueur(tour%plateau->getNbrJoueurs())->addScore(ret);
+    plateau->deffauser();
     return true;
 }
 

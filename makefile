@@ -5,7 +5,7 @@ HPP=src/hpp/
 C=src/cpp/
 
 all : $(OBJ)
-	$(CPP) -o go $(OBJ)
+	$(CPP) -o go $(OBJ) -lsfml-graphics -lsfml-window -lsfml-system
 	./go
 Controleur.o : $(C)Controleur.cpp $(HPP)Controleur.hpp
 	$(CCO)

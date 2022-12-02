@@ -16,7 +16,7 @@
     
 class Controleur {
     private:
-        PlateauDominos plateau;
+        PlateauDominos *plateau;
         int tour =0; //Indique le joueur auquel c'est le tour de jouer
         int nombreDeJoueurs;
     

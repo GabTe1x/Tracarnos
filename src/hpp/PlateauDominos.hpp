@@ -5,12 +5,9 @@
 #include "Dominos.hpp"
 
 class PlateauDominos:public Plateau <Dominos>{
-    private:
-        int nbrDominos=0;
     public:
         //contructeur par défaut
         PlateauDominos();
-        PlateauDominos(int nbrJoueurs,int nbrDominos);
 
         // return -1 si tuile pas poser, 0 si fin de parti sinon 1
         bool jouer(Dominos &d,int x,int y);

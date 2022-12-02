@@ -11,7 +11,7 @@ class Tuile {
     public:
         Tuile(T & h,T & d,T & b,T & g);
         void tourne();
-        T getValeur(int i)const;
+        T& getValeur(int i);
 };
 #include "Tuile.tpp"
 
