@@ -8,7 +8,7 @@ void Tuile<T>::tourne(){
     haut = gauche;
     gauche = bas;
     bas = droite;
-    haut = tmp;
+    droite = tmp;
 }
 
 template <typename T>

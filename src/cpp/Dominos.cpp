@@ -36,7 +36,7 @@ std::ostream & operator <<( std::ostream& out, Dominos& x ) {
         << x.getValeur(4).at(2) << "---" << x.getValeur(2).at(0)<< "\n"
         << x.getValeur(4).at(1) << "---" << x.getValeur(2).at(1)<< "\n"
         << x.getValeur(4).at(0) << "---" << x.getValeur(2).at(2)<< "\n"
-        << "'" << x.getValeur(3).at(2) << x.getValeur(3).at(1) << x.getValeur(3).at(1) << "'\n"
+        << "'" << x.getValeur(3).at(2) << x.getValeur(3).at(1) << x.getValeur(3).at(0) << "'\n"
     << std::endl;
     return out ;
 }

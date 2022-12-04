@@ -23,14 +23,25 @@ int main(){
         std::cout << ctrl << std::endl;
         while (!ctrl.finDePartie()){
             Dominos d = ctrl.getPioche();
-            std::cout << "Joueur n°" << ctrl.getJoueurActuel()->getId() << ": Nouvelle tuile:\n" <<d << std::endl;
-            int x;
-            std::cout << "ou placer (x)?" << std::endl;
-            std::cin >> x;
-            int y;
-            std::cout << "ou placer (y)?" << std::endl;
-            std::cin >> y;
-            ctrl.jouer(x, y);            
+            int choix;
+            bool endTurn{false};
+            while(endTurn==false){
+                std::cout << "Joueur n°" << ctrl.getJoueurActuel()->getId() << ": Nouvelle tuile:\n" <<d << std::endl;
+                std::cout << "placer (1) ou tourner(2)?" << std::endl;
+                std::cin >> choix;
+                if (choix == 1){
+                    int x;
+                    std::cout << "ou placer (x)?" << std::endl;
+                    std::cin >> x;
+                    int y;
+                    std::cout << "ou placer (y)?" << std::endl;
+                    std::cin >> y;
+                    ctrl.jouer(x, y); 
+                    endTurn=true; 
+                } else{
+                    d.tourne();
+                }          
+            }
         }
         std::cout << "fin de partie" << std::endl;
 
