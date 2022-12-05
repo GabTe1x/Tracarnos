@@ -11,8 +11,14 @@ Dominos::~Dominos()
 bool Dominos::correspond(std::array<int,3>& cote,int myside)
 {
     std::array<int,3>arr{getValeur(myside)};
-    if(arr[0]==cote[2] && arr[1]==cote[1] && arr[2]==cote[0])return true;
-    return false;
+    std::cout<< arr[0] << "=?=" << cote[2] 
+    << " et "<< arr[1] << "=?=" << cote[1] 
+    << " et "<< arr[2] << "=?=" << cote[0]
+    <<std::endl;
+    if(arr[0]==cote[2] && arr[1]==cote[1] && arr[2]==cote[0]){
+        std::cout<<"Comparaison reussie"<<std::endl;
+        return true;
+    } else return false;
 }
 
 int Dominos::getScore(int i){

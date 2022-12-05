@@ -9,57 +9,76 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
     std::pair<int, int> coord (x, y);
     if (tuiles.empty()){
         tuiles[coord]=&tuile;
+        std::cout << "Tuile placée sur plateau vide" << std::endl;
         return 0;
     }
     
     //Si le plateau n'est pas vide
     //S'il y a deja une tuile sur la case (x, y)
     if (existeTuile(x, y)){
+        std::cout << "Il existe déjà une tuile sur cet emplacement" << std::endl;
         return -1;
     }
 
     bool estColle= false;
-    //On verifie que la pièce du dessus correspond bien
+
+    //On verifie que la pièce au dessus correspond bien
     if (existeTuile(x, y+1)){
         estColle = true;
-        if(!tuile.correspond(tuiles[std::pair<int,int>(x,y+1)]->getValeur(2),0))
-            return -1;
-        else{ 
+        if(tuile.correspond(tuiles[std::pair<int,int>(x,y+1)]->getValeur(3),1)){
             pts+=tuile.getScore(0);
-        }
-    }
-    //On verifie que la pièce de gauche correspond bien
-    if (existeTuile(x-1, y)){
-        estColle = true;
-        if(!tuile.correspond(tuiles[std::pair<int,int>(x-1,y)]->getValeur(1),3))
+            std::cout << "dessus correspond" << std::endl;
+        }else{ 
+            std::cout << "dessus say no" << std::endl;
             return -1;
-        else{ 
-            pts+=tuile.getScore(3);
         }
     }
-    //On verifie que la pièce du bas correspond bien
-    if (existeTuile(x, y-1)){
-        estColle = true;
-        if(!tuile.correspond(tuiles[std::pair<int,int>(x,y-1)]->getValeur(0),2))
-            return -1;
-        else{ 
-            pts+=tuile.getScore(2);
-        }
-    }
-    //On verifie que la pièce de droite correspond bien
+ 
+    //On verifie que la pièce à droite correspond bien
     if (existeTuile(x+1, y)){
         estColle = true;
-        if(!tuile.correspond(tuiles[std::pair<int,int>(x+1,y)]->getValeur(3),1))
-            return -1;
-        else{ 
+        if(tuile.correspond(tuiles[std::pair<int,int>(x+1,y)]->getValeur(4),2)){
             pts+=tuile.getScore(1);
+            std::cout << "droite correspond" << std::endl;
+        }else{ 
+            std::cout << "droite say no" << std::endl;
+            return -1;
         }
     }
+
+    //On verifie que la pièce en dessous correspond bien
+    if (existeTuile(x, y-1)){
+        estColle = true;
+        if(tuile.correspond(tuiles[std::pair<int,int>(x,y-1)]->getValeur(1),3)){
+            pts+=tuile.getScore(2);
+            std::cout << "dessous correspond" << std::endl;
+        }else{ 
+            std::cout << "dessous say no" << std::endl;
+            return -1;
+        }
+    }
+
+    //On verifie que la pièce à gauche correspond bien
+    if (existeTuile(x-1, y)){
+        estColle = true;
+        if(tuile.correspond(tuiles[std::pair<int,int>(x-1,y)]->getValeur(2),4)){
+            pts+=tuile.getScore(3);
+            std::cout << "gauche correspond" << std::endl;
+        }else{ 
+            std::cout << "gauche say no" << std::endl;
+            return -1;
+
+        }
+    }
+
+
     if (estColle){
         this->tuiles[coord]=&tuile;
         deffauser();
         return pts;
+        std::cout << "tuile placée" << std::endl;
     }
+    std::cout << "estColle say no" << std::endl;
     return -1;
 }
 

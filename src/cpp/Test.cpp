@@ -6,10 +6,13 @@
 #include "../hpp/Controleur.hpp"
 
 int main(){
-    /*std::cout << "Graphique (1) ou Terminal (2)?" << std::endl;
+    /*
+    std::cout << "Graphique (1) ou Terminal (2)?" << std::endl;
     int num;
     std::cin >> num;
-    if(num==2){
+    if(num==1){
+        std::cout << "wip" << std::endl;
+    }else{
         int joueurs;
         std::cout << "Nombre de joueurs?" << std::endl;
         std::cin >> joueurs;
@@ -20,12 +23,12 @@ int main(){
         Controleur ctrl;
         ctrl.commencer(joueurs,dominos);
 
-        std::cout << ctrl << std::endl;
         while (!ctrl.finDePartie()){
             Dominos d = ctrl.getPioche();
             int choix;
             bool endTurn{false};
             while(endTurn==false){
+                std::cout << ctrl << std::endl;
                 std::cout << "Joueur n°" << ctrl.getJoueurActuel()->getId() << ": Nouvelle tuile:\n" <<d << std::endl;
                 std::cout << "placer (1) ou tourner(2)?" << std::endl;
                 std::cin >> choix;
@@ -36,7 +39,7 @@ int main(){
                     int y;
                     std::cout << "ou placer (y)?" << std::endl;
                     std::cin >> y;
-                    ctrl.jouer(x, y); 
+                    ctrl.jouer(x, y, &d); 
                     endTurn=true; 
                 } else{
                     d.tourne();

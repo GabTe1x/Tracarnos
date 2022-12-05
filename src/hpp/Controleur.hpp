@@ -35,7 +35,7 @@ class Controleur {
         
         // @param x,y coordonnées ou poser la tuile courante
         // return -1 si tuile pas poser, 0 plus de tuile sinon 1
-        bool jouer(int x,int y);
+        bool jouer(int x,int y, Dominos* d);
 
         // récupère la tuile la plus haute de la pioche
         Dominos& getPioche();
