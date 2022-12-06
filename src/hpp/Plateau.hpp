@@ -4,6 +4,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <stack>
 #include "Joueur.hpp"
 
 template<typename T>
@@ -17,7 +18,7 @@ class Plateau{
         std::map<std::pair<int, int> , T* > tuiles;
 
         //Pioche de  Tuile T a poser sur notre plateau
-        std::vector<T*> pioche;
+        std::stack<T*> pioche;
     public:
 
         // contructeur par défaut initialisation par controleur
@@ -30,7 +31,7 @@ class Plateau{
         T * getTuile(int x, int y)const;
 
         // retourne la dernière carte de la pioche
-        T * getPioche();
+        T * piocher();
 
         // retourne nbr joueurs
         int getNbrJoueurs()const;
@@ -44,8 +45,8 @@ class Plateau{
         // vérifie s'il reste une tuile à jouer
         bool finDePartie()const;
 
-        //utiliser pour retirer dernière carte joué de la pioche
-        void deffauser();
+        //Supprime la tuile en haut de la pioche (après l'avoir poser ou defaussé)
+        bool defausser();
 
         //retourne le joueur avec le plus de points
         Joueur* getVainqueur();
@@ -53,7 +54,7 @@ class Plateau{
         // ajouter joueur à la liste de joueur (initialisation)
         void ajouterJoueur(Joueur & j);
         // ajouter dominos à la pioche (initialisation)
-        void ajouteTuile(T &t);
+        void ajouteTuileDsPioche(T &t);
 };
 #include "Plateau.tpp"
 

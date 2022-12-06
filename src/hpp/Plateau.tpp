@@ -27,9 +27,9 @@ bool Plateau<T>::finDePartie()const
 }
 
 template <typename T>
-T* Plateau<T>::getPioche()
-{
-    return pioche.at(pioche.size()-1);
+T* Plateau<T>::piocher(){
+    std::cout <<"reste " << pioche.size() << " Tuiles dans la pioches" << std::endl;
+    return pioche.top();
 }
 
 template <typename T>
@@ -62,16 +62,23 @@ void Plateau<T>::ajouterJoueur(Joueur & j)
     joueurs.push_back(&j);
 }
 
-template <typename T>
-void Plateau<T>::deffauser()
-{
-    joueurs.pop_back();
-}
 
 template <typename T>
-void Plateau<T>::ajouteTuile(T &t)
+bool Plateau<T>::defausser()
 {
-    pioche.push_back(&t);
+    if (pioche.empty()){
+        return false;
+    }else{
+        pioche.pop();
+        return true;
+    }
+}
+
+
+template <typename T>
+void Plateau<T>::ajouteTuileDsPioche(T &t)
+{
+    pioche.push(&t);
 }
 
 template <typename T>

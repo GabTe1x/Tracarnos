@@ -74,7 +74,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
 
     if (estColle){
         this->tuiles[coord]=&tuile;
-        deffauser();
+        defausser();
         return pts;
         std::cout << "tuile placée" << std::endl;
     }

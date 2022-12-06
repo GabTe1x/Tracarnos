@@ -24,13 +24,14 @@ int main(){
         ctrl.commencer(joueurs,dominos);
 
         while (!ctrl.finDePartie()){
-            Dominos d = ctrl.getPioche();
-            int choix;
+            Dominos d = ctrl.piocher();
             bool endTurn{false};
             while(endTurn==false){
                 std::cout << ctrl << std::endl;
-                std::cout << "Joueur n°" << ctrl.getJoueurActuel()->getId() << ": Nouvelle tuile:\n" <<d << std::endl;
-                std::cout << "placer (1) ou tourner(2)?" << std::endl;
+                std::cout << "Joueur n°" << ctrl.getJoueurActuel()->getId() << std::endl;
+                std::cout << ": Nouvelle tuile:\n" <<d << std::endl;
+                int choix;
+                std::cout << "placer (1), défausser (2) ou tourner(3)?" << std::endl;
                 std::cin >> choix;
                 if (choix == 1){
                     int x;
@@ -41,7 +42,11 @@ int main(){
                     std::cin >> y;
                     ctrl.jouer(x, y, &d); 
                     endTurn=true; 
-                } else{
+                } else if (choix == 2){
+                    ctrl.defausser();
+                    endTurn=true; 
+                }
+                else{
                     d.tourne();
                 }          
             }

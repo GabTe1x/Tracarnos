@@ -38,7 +38,10 @@ class Controleur {
         bool jouer(int x,int y, Dominos* d);
 
         // récupère la tuile la plus haute de la pioche
-        Dominos& getPioche();
+        Dominos& piocher();
+
+        // permet de defausser la premiere tuile de la pioche
+        bool defausser();
 
         PlateauDominos* getPlateau();
         Joueur* getJoueurActuel();

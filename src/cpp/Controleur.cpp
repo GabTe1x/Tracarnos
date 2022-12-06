@@ -27,9 +27,9 @@ void Controleur::commencer(int nbrJ,int pioche)
         std::array<int,3>c3{(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)};
         std::array<int,3>c4{(int)dist6(rng),(int)dist6(rng),(int)dist6(rng)};
         Dominos *d=new Dominos{c1,c2,c3,c4};
-        plateau->ajouteTuile(*d);
+        plateau->ajouteTuileDsPioche(*d);
     }
-    plateau->peutPoser(*plateau->getPioche(),5,5);
+    plateau->peutPoser(*plateau->piocher(),5,5);
 }
 
 Joueur& Controleur::getVainqueur()
@@ -41,18 +41,20 @@ bool Controleur::finDePartie() const{
     return plateau->finDePartie();
 }
 
-Dominos& Controleur::getPioche()
+Dominos& Controleur::piocher()
 {
-    return *plateau->getPioche();
+    return *plateau->piocher();
 }
-
+ bool Controleur::defausser(){
+    return plateau->defausser();
+ }
 
 bool Controleur::jouer(int x,int y, Dominos* d){
     int ret=plateau->peutPoser(*d,x,y);
     if(ret==-1)
         return false;
     plateau->getJoueur(tour%plateau->getNbrJoueurs())->addScore(ret);
-    plateau->deffauser();
+    plateau->defausser();
     return true;
 }
 
