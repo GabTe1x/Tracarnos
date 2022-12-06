@@ -29,7 +29,7 @@ void Controleur::commencer(int nbrJ,int pioche)
         Dominos *d=new Dominos{c1,c2,c3,c4};
         plateau->ajouteTuileDsPioche(*d);
     }
-    plateau->peutPoser(*plateau->piocher(),5,5);
+    plateau->peutPoser(piocher(),5,5);
 }
 
 Joueur& Controleur::getVainqueur()

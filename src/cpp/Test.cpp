@@ -6,7 +6,6 @@
 #include "../hpp/Controleur.hpp"
 
 int main(){
-    /*
     std::cout << "Graphique (1) ou Terminal (2)?" << std::endl;
     int num;
     std::cin >> num;
@@ -19,7 +18,7 @@ int main(){
         int dominos;
         std::cout << "Nombre de dominos?" << std::endl;
         std::cin >> dominos;
-        */ int joueurs{2};int dominos{5};
+        // int joueurs{2};int dominos{5};
         Controleur ctrl;
         ctrl.commencer(joueurs,dominos);
 
