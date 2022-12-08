@@ -8,7 +8,7 @@ void Controleur::commencer(int nbrJ,int pioche)
     // init random
     std::random_device dev;
     std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist6(0,4);
+    std::uniform_int_distribution<std::mt19937::result_type> dist6(0,3);
 
     nombreDeJoueurs=nbrJ; 
 

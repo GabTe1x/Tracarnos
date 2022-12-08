@@ -1,18 +1,9 @@
-#ifndef _CONTROLEUR
-#define _CONTROLEUR
+#pragma once
 
 #include "PlateauDominos.hpp"
 #include "Joueur.hpp"
 #include <random>
 
-
-/*  
-    TODO faire une class template qui prend un plateau T mettre 
-    pioche dans tableauDominos car unique a dominos et rédefinir 
-    les fonctions starts et jouer pour chaque type pour n'avoir 
-    qu'une classe controleur et 3 plateaux au lieu de 3 controleurs
-    et 3 plateaux 
-*/
     
 class Controleur {
     private:
@@ -47,6 +38,3 @@ class Controleur {
         Joueur* getJoueurActuel();
 };
 std::ostream& operator<<(std::ostream&, Controleur&);
-
-
-#endif

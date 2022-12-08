@@ -1,26 +1,29 @@
-CPP=g++ --std=c++11 -Wall
-CCO=$(CPP) -c $<
-OBJ= Test.o Controleur.o Joueur.o PlateauDominos.o Dominos.o
-HPP=src/hpp/
-C=src/cpp/
+CPP := g++ -Wall -std=c++11
 
-all : $(OBJ)
-	$(CPP) -o go $(OBJ) -lsfml-graphics -lsfml-window -lsfml-system
-	./go
-Controleur.o : $(C)Controleur.cpp $(HPP)Controleur.hpp
-	$(CCO)
+BIN		:= bin
+SRC		:= src
+HPP		:= src/hpp 
 
-Joueur.o : $(C)Joueur.cpp $(HPP)Joueur.hpp
-	$(CCO)
+LIBRAIRIES	:= -lsfml-graphics -lsfml-window -lsfml-system
+EXECUTABLE	:= main
 
-PlateauDominos.o : $(C)PlateauDominos.cpp $(HPP)PlateauDominos.hpp
-	$(CCO)
+MKDIR_P = mkdir -p
 
-Dominos.o : $(C)Dominos.cpp $(HPP)Dominos.hpp
-	$(CCO)
+.PHONY: directories
 
-Test.o : $(C)Test.cpp
-	$(CCO)
+all: directories $(BIN)/$(EXECUTABLE)
 
-clean :
-	rm -f *.o go
+directories: ${BIN}
+
+${BIN}:
+	${MKDIR_P} ${BIN}
+
+run: clean all
+	clear
+	./$(BIN)/$(EXECUTABLE)
+
+$(BIN)/$(EXECUTABLE): $(SRC)/cpp/*.cpp
+	$(CPP) -I$(HPP) $^ -o $@ $(LIBRAIRIES)
+
+clean:
+	-rm $(BIN)/*

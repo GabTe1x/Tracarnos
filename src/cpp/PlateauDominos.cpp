@@ -8,6 +8,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
     //Si le plateau est vide
     std::pair<int, int> coord (x, y);
     if (tuiles.empty()){
+        defausser();
         tuiles[coord]=&tuile;
         std::cout << "Tuile placée sur plateau vide" << std::endl;
         return 0;

@@ -4,13 +4,15 @@
 #include "../hpp/Dominos.hpp"
 #include "../hpp/PlateauDominos.hpp"
 #include "../hpp/Controleur.hpp"
+#include "../hpp/App.hpp"
 
 int main(){
     std::cout << "Graphique (1) ou Terminal (2)?" << std::endl;
     int num;
     std::cin >> num;
     if(num==1){
-        std::cout << "wip" << std::endl;
+        App app{};
+        app.run();
     }else{
         int joueurs;
         std::cout << "Nombre de joueurs?" << std::endl;
@@ -50,11 +52,7 @@ int main(){
                 }          
             }
         }
-        std::cout << "fin de partie" << std::endl;
-
-        
-        
-        
+        std::cout << "fin de partie" << std::endl;        
     }
 }
 
