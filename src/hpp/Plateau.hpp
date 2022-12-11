@@ -23,6 +23,9 @@ class Plateau{
 
         // contructeur par défaut initialisation par controleur
         Plateau();
+        
+        // destructeur
+        virtual ~Plateau();
 
         // vérifie si la tuile existe à la position x,y
         bool existeTuile(int x, int y)const;

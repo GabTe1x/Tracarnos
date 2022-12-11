@@ -2,6 +2,16 @@
 
 PlateauDominos::PlateauDominos(){}
 
+PlateauDominos::~PlateauDominos()
+{
+    for(size_t i = 0; i<joueurs.size();i++)
+    {
+        delete joueurs[i];
+    }
+    joueurs.clear();
+
+}
+
 int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
 {
     int pts=0;
@@ -13,7 +23,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
         std::cout << "Tuile placée sur plateau vide" << std::endl;
         return 0;
     }
-    
+
     //Si le plateau n'est pas vide
     //S'il y a deja une tuile sur la case (x, y)
     if (existeTuile(x, y)){

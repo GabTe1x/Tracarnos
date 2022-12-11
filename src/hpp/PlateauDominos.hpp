@@ -9,6 +9,9 @@ class PlateauDominos:public Plateau <Dominos>{
         //contructeur par défaut
         PlateauDominos();
 
+        //destructeur par défaut
+        ~PlateauDominos();
+
         // return -1 si tuile pas poser, 0 si fin de parti sinon 1
         bool jouer(Dominos &d,int x,int y);
 

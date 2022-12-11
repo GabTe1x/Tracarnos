@@ -51,6 +51,9 @@ void Menu::traitementInput()
             case sf::Keyboard::Down:
                 curseur=(curseur+1)%3;
                 break;
+            case sf::Keyboard::Enter:
+                entree=true;
+                break;
             default:
                 break;
             }
@@ -73,6 +76,15 @@ void Menu::dessine()
 
 void Menu::maj()
 {
+    if(entree)
+    {
+        if(curseur==0)
+        {
+            ParamDominos *d=new ParamDominos(contexte);
+            contexte->manageur->ajoute(*d);
+        }
+        // TODO carcassonne et trax
+    }
     switch (curseur)
     {
     case 0:
