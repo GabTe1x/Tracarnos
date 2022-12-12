@@ -1,4 +1,4 @@
-#include "../hpp/Menu.hpp"
+#include "../include/Menu.hpp"
 
 Menu::Menu(Contexte *obj) : contexte{obj} {};
 Menu::~Menu()

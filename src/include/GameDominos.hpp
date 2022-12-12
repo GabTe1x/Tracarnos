@@ -1,10 +1,10 @@
-#pragma once
+#ifndef _GAMEDOMINOS
+#define _GAMEDOMINOS
 
 #include "Etat.hpp"
 #include "Contexte.hpp"
-#include <SFML/Graphics/Text.hpp>
-#include <SFML/Window/Event.hpp>
 #include "Controleur.hpp"
+#include <SFML/Window/Event.hpp>
 
 class GameDominos:public Etat
 {
@@ -20,3 +20,5 @@ public:
     void dessine() override;
     void maj() override;
 };
+
+#endif // _GAMEDOMINOS

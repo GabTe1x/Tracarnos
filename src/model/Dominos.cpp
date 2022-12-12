@@ -1,4 +1,4 @@
-#include "../hpp/Dominos.hpp"
+#include "../include/Dominos.hpp"
 
 
 Dominos::Dominos(std::array<int, 3> &h,std::array<int, 3> &d,std::array<int, 3> &b,std::array<int, 3>&g):Tuile(h,d,b,g){}

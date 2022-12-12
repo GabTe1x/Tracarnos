@@ -1,4 +1,4 @@
-#include "../hpp/ParamDominos.hpp"
+#include "../include/ParamDominos.hpp"
 
 ParamDominos::ParamDominos(Contexte *obj) : contexte{obj} {};
 
@@ -25,8 +25,8 @@ void ParamDominos::init()
 
 
     dominos.setPosition(width * 2 / 5, height * 0.5 / 5);
-    slcDominos.setPosition(width/5,height*1.5/3);
-    slcJoueurs.setPosition(width/5,height*2.5/3);
+    slcDominos.setPosition(width/5,height*1/3);
+    slcJoueurs.setPosition(width/5,height*2/3);
 }
 
 void ParamDominos::traitementInput()
@@ -43,6 +43,9 @@ void ParamDominos::traitementInput()
 
             switch (event.key.code)
             {
+            case sf::Keyboard::Escape:
+                escape=true;
+                break;
             case sf::Keyboard::Up:
                 curseur-=1;
                 if(curseur<0)
@@ -108,7 +111,12 @@ void ParamDominos::maj()
         Controleur *ctlr=new Controleur();
         GameDominos *d=new GameDominos(contexte,ctlr,n_joueurs,n_dominos);
         contexte->manageur->ajoute(*d);
+        entree=false;
     }*/
+    if(escape)
+    {
+        contexte->manageur->change();
+    }
     if(curseur==0){
         std::string s = "Nombre de dominos  < "+std::to_string(n_dominos)+" >";
         slcDominos.setString(s);

@@ -1,4 +1,4 @@
-#include "../hpp/PlateauDominos.hpp"
+#include "../include/PlateauDominos.hpp"
 
 PlateauDominos::PlateauDominos(){}
 

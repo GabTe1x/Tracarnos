@@ -1,10 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <array>
-#include "../hpp/Dominos.hpp"
-#include "../hpp/PlateauDominos.hpp"
-#include "../hpp/Controleur.hpp"
-#include "../hpp/App.hpp"
+#include "../include/Controleur.hpp"
+#include "../include/App.hpp"
 
 int main(){
     std::cout << "Graphique (1) ou Terminal (2)?" << std::endl;

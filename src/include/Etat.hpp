@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _ETAT
+#define _ETAT
 
 class Etat
 {
@@ -14,3 +15,5 @@ public:
     virtual void pause(){};
     virtual void reprendre(){};
 };
+
+#endif

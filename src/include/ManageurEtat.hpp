@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _STATEMANAGER
+#define _STATEMANAGER
 
 #include <stack>
 #include "Etat.hpp"
@@ -19,3 +20,5 @@ public:
     void change();
     Etat* getCourant();
 };
+
+#endif

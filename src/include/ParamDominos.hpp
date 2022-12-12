@@ -1,10 +1,10 @@
-#pragma once
+#ifndef _PARAMDOMINOS
+#define _PARAMDOMINOS
 
 #include "Etat.hpp"
 #include "Contexte.hpp"
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Window/Event.hpp>
-//#include "GameDominos.hpp"
 
 class ParamDominos:public Etat
 {
@@ -16,6 +16,7 @@ private:
     sf::Text slcJoueurs;
     sf::Text dominos;
     bool entree=false;
+    bool escape=false;
     int curseur=0;
 public:
     ParamDominos(Contexte *obj);
@@ -26,3 +27,5 @@ public:
     void dessine() override;
     void maj() override;
 };
+
+#endif

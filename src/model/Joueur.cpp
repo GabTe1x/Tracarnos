@@ -1,4 +1,4 @@
-#include "../hpp/Joueur.hpp"
+#include "../include/Joueur.hpp"
 Joueur::Joueur(int id): score{0}, id{id}{}
 
 int Joueur::getScore()const

@@ -1,4 +1,4 @@
-#include "../hpp/GameDominos.hpp"
+#include "../include/GameDominos.hpp"
 
 GameDominos::GameDominos(Contexte *obj,Controleur *ctrl,int j,int d) : contexte{obj}, ctlr{ctrl}
 {

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _APP
+#define _APP
 
 #include "Contexte.hpp"
 #include "Menu.hpp"
@@ -13,3 +14,5 @@ public:
 
     void run();
 };
+
+#endif // _APP

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _MENU
+#define _MENU
 
 #include "Etat.hpp"
 #include "ParamDominos.hpp"
@@ -23,3 +24,5 @@ public:
     void dessine() override;
     void maj() override;
 };
+
+#endif

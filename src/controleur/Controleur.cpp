@@ -1,4 +1,4 @@
-#include "../hpp/Controleur.hpp"
+#include "../include/Controleur.hpp"
 
 Controleur::Controleur():plateau{}{};
 

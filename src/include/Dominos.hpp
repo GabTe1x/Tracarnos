@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _TUILEDOMINOS
+#define _TUILEDOMINOS
 
 #include "Tuile.hpp"
 #include <array>
@@ -14,3 +15,5 @@ public:
 };
 
 std::ostream & operator <<( std::ostream& out, Dominos& x );
+
+#endif // _TUILEDOMINOS

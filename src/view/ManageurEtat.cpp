@@ -1,4 +1,4 @@
-#include "../hpp/ManageurEtat.hpp"
+#include "../include/ManageurEtat.hpp"
 
 ManageurEtat::ManageurEtat():mettre{false},retirer{false},remplacer{false}
 {

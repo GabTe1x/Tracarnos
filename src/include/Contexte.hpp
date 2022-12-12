@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _CONTEXTE
+#define _CONTEXTE
 
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -17,3 +18,6 @@ struct Contexte
         manageur = new ManageurEtat();
     }
 };
+
+
+#endif // _CONTEXTE
