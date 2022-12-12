@@ -11,7 +11,7 @@ GameDominos::~GameDominos()
 
 void GameDominos::init()
 {
-
+    
 }
 
 void GameDominos::traitementInput()
