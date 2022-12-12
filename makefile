@@ -8,7 +8,7 @@ HPP		:= src/include/
 LIBRAIRIES	:= -lsfml-graphics -lsfml-window -lsfml-system
 
 CCO= $(CPP) -c $<
-OBJECTS= Test.o App.o GameDominos.o ManageurEtat.o Menu.o ParamDominos.o SpriteDominos.o Controleur.o Dominos.o Joueur.o PlateauDominos.o# liste des objets intermédiaires
+OBJECTS= Test.o App.o GameDominos.o ManageurEtat.o Menu.o ParamDominos.o SpriteDominos.o Controleur.o ControleurTrax.o TuileTrax.o PlateauTrax.o Dominos.o Joueur.o PlateauDominos.o# liste des objets intermédiaires
 
 all : $(OBJECTS)
 	$(CPP) -o tracarnos $(OBJECTS) $(LIBRAIRIES)
@@ -38,6 +38,9 @@ SpriteDominos.o : $(VIEW)SpriteDominos.cpp $(HPP)SpriteDominos.hpp
 Controleur.o : $(CTRL)Controleur.cpp $(HPP)Controleur.hpp
 	$(CCO)
 
+ControleurTrax.o : $(CTRL)ControleurTrax.cpp $(HPP)ControleurTrax.hpp
+	$(CCO)
+
 Dominos.o : $(MODEL)Dominos.cpp $(HPP)Dominos.hpp
 	$(CCO)
 
@@ -45,6 +48,12 @@ Joueur.o : $(MODEL)Joueur.cpp $(HPP)Joueur.hpp
 	$(CCO)
 
 PlateauDominos.o : $(MODEL)PlateauDominos.cpp $(HPP)PlateauDominos.hpp
+	$(CCO)
+
+TuileTrax.o : $(MODEL)TuileTrax.cpp $(HPP)TuileTrax.hpp
+	$(CCO)
+
+PlateauTrax.o : $(MODEL)PlateauTrax.cpp $(HPP)PlateauTrax.hpp
 	$(CCO)
 
 
