@@ -6,3 +6,9 @@ SpriteDominos::SpriteDominos(std::string a,std::string b,std::string c,std::stri
 }
 
 SpriteDominos::~SpriteDominos(){}
+
+void SpriteDominos::draw(sf::RenderTarget& target, sf::RenderStates states)const
+{
+    states.transform *= getTransform();
+    target.draw(states);
+}

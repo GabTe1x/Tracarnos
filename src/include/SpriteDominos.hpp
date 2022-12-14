@@ -3,10 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 
-class SpriteDominos//: public sf::Drawable, public sf::Transformable
+class SpriteDominos: public sf::Drawable, public sf::Transformable
 {
 private:
-    //virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    sf::Text haut;
+    sf::Text ;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
   
 public:
     SpriteDominos(std::string a,std::string b,std::string c,std::string d,std::string e,sf::Font f);
