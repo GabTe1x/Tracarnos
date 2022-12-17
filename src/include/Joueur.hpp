@@ -1,6 +1,8 @@
 #ifndef _JOUEUR
 #define _JOUEUR
 
+#include <iostream>
+
 class Joueur {
     private:
         int score;
@@ -8,6 +10,7 @@ class Joueur {
     
     public:
         Joueur(int id);
+        ~Joueur();
         int getScore()const;
         void addScore(int n);  
         int getId()const;    

@@ -4,12 +4,17 @@ PlateauDominos::PlateauDominos(){}
 
 PlateauDominos::~PlateauDominos()
 {
-    for(size_t i = 0; i<joueurs.size();i++)
+    for(Joueur *j:joueurs)
     {
-        delete joueurs[i];
+        delete j;
     }
     joueurs.clear();
-
+    for(std::pair<std::pair<int,int>,Dominos*> pair: tuiles)
+    {
+        delete pair.second;
+    }
+    tuiles.clear();
+    std::cout<<"Destruction"<<std::endl;
 }
 
 int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)

@@ -2,6 +2,12 @@
 
 Controleur::Controleur():plateau{}{};
 
+Controleur::~Controleur()
+{
+    delete plateau;
+    std::cout<<"Destructuin controleur"<<std::endl;
+}
+
 void Controleur::commencer(int nbrJ,int pioche)
 {
     plateau=new PlateauDominos{};
