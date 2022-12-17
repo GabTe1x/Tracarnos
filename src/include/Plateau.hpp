@@ -31,7 +31,7 @@ class Plateau{
         bool existeTuile(int x, int y)const;
 
         // retourne la tuile posé sur le plateau a la case X,Y
-        T * getTuile(int x, int y)const;
+        T * getTuile(int x, int y);
 
         // retourne la dernière carte de la pioche
         T * piocher();

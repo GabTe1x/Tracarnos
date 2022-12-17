@@ -39,6 +39,7 @@ class Controleur {
 
         PlateauDominos* getPlateau();
         Joueur* getJoueurActuel();
+        
 };
 std::ostream& operator<<(std::ostream&, Controleur&);
 

@@ -6,13 +6,20 @@
 class SpriteDominos: public sf::Drawable, public sf::Transformable
 {
 private:
-    sf::Text haut;
-    sf::Text ;
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    sf::Text one;
+    sf::Text two;
+    sf::Text three;
+    sf::Text four;
+    sf::Text five;
+    sf::RectangleShape border;
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
   
 public:
-    SpriteDominos(std::string a,std::string b,std::string c,std::string d,std::string e,sf::Font f);
+    SpriteDominos();
     ~SpriteDominos();
+    void init(sf::Font &f,std::string haut,std::string cote1
+                    ,std::string cote2,std::string cote3,std::string bas);
+    void myPosition(float x,float y);
 };
 
 #endif // _SPRITEDOMINOS

@@ -17,7 +17,7 @@ bool Plateau<T>::existeTuile(int x, int y)const
 }
 
 template <typename T>
-T * Plateau<T>::getTuile(int x, int y)const
+T * Plateau<T>::getTuile(int x, int y)
 {
     std::pair<int, int> coord (x, y);
     return this->tuiles[coord];

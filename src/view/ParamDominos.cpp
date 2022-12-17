@@ -106,13 +106,12 @@ void ParamDominos::dessine()
 
 void ParamDominos::maj()
 {
-    /*if(entree)
+    if(entree)
     {
-        Controleur *ctlr=new Controleur();
-        GameDominos *d=new GameDominos(contexte,ctlr,n_joueurs,n_dominos);
+        GameDominos *d=new GameDominos(contexte,n_joueurs,n_dominos);
         contexte->manageur->ajoute(*d);
         entree=false;
-    }*/
+    }
     if(escape)
     {
         contexte->manageur->change();

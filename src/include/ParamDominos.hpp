@@ -4,7 +4,7 @@
 #include "Etat.hpp"
 #include "Contexte.hpp"
 #include <SFML/Graphics/Text.hpp>
-#include <SFML/Window/Event.hpp>
+#include "GameDominos.hpp"
 
 class ParamDominos:public Etat
 {
