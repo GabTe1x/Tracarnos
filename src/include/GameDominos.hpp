@@ -21,10 +21,12 @@ private:
     sf::RectangleShape border;
     SpriteDominos *pioche;
     sf::Text player;
-
+    sf::Text aide1;
+    sf::Text aide2;
+    sf::Text aide3;
     // Dominos
     std::vector<SpriteDominos*>tuiles;
-    Dominos *current;
+    Dominos *current;   
     sf::RectangleShape select;
     int x,y;
 public:

@@ -6,11 +6,11 @@ SpriteDominos::~SpriteDominos(){}
 
 void SpriteDominos::init(sf::Font &f,Dominos *d)
 {
-    std::string haut = " "+std::to_string(d->getValeur(0)[0])+std::to_string(d->getValeur(0)[1])+std::to_string(d->getValeur(0)[2])+" ";
-    std::string cote1 = std::to_string(d->getValeur(3)[2])+"   "+std::to_string(d->getValeur(1)[0]);
-    std::string cote2 = std::to_string(d->getValeur(3)[1])+"   "+std::to_string(d->getValeur(1)[1]);
-    std::string cote3 = std::to_string(d->getValeur(3)[0])+"   "+std::to_string(d->getValeur(1)[2]);
-    std::string bas = " "+std::to_string(d->getValeur(2)[2])+std::to_string(d->getValeur(2)[1])+std::to_string(d->getValeur(2)[0])+" ";
+    std::string haut = " "+std::to_string(d->getValeur(1)[0])+std::to_string(d->getValeur(1)[1])+std::to_string(d->getValeur(1)[2])+" ";
+    std::string cote1 = std::to_string(d->getValeur(0)[2])+"   "+std::to_string(d->getValeur(2)[0]);
+    std::string cote2 = std::to_string(d->getValeur(0)[1])+"   "+std::to_string(d->getValeur(2)[1]);
+    std::string cote3 = std::to_string(d->getValeur(0)[0])+"   "+std::to_string(d->getValeur(2)[2]);
+    std::string bas = " "+std::to_string(d->getValeur(3)[2])+std::to_string(d->getValeur(3)[1])+std::to_string(d->getValeur(3)[0])+" ";
     
     one.setString(haut);
     one.setFont(f);
@@ -35,11 +35,12 @@ void SpriteDominos::init(sf::Font &f,Dominos *d)
 
 void SpriteDominos::setString(Dominos *d)
 {
-    std::string haut = " "+std::to_string(d->getValeur(0)[0])+std::to_string(d->getValeur(0)[1])+std::to_string(d->getValeur(0)[2])+" ";
-    std::string cote1 = std::to_string(d->getValeur(3)[2])+"   "+std::to_string(d->getValeur(1)[0]);
-    std::string cote2 = std::to_string(d->getValeur(3)[1])+"   "+std::to_string(d->getValeur(1)[1]);
-    std::string cote3 = std::to_string(d->getValeur(3)[0])+"   "+std::to_string(d->getValeur(1)[2]);
-    std::string bas = " "+std::to_string(d->getValeur(2)[2])+std::to_string(d->getValeur(2)[1])+std::to_string(d->getValeur(2)[0])+" ";
+    std::cout<<*d<<std::endl;
+    std::string haut = " "+std::to_string(d->getValeur(1)[0])+std::to_string(d->getValeur(1)[1])+std::to_string(d->getValeur(1)[2])+" ";
+    std::string cote1 = std::to_string(d->getValeur(0)[2])+"   "+std::to_string(d->getValeur(2)[0]);
+    std::string cote2 = std::to_string(d->getValeur(0)[1])+"   "+std::to_string(d->getValeur(2)[1]);
+    std::string cote3 = std::to_string(d->getValeur(0)[0])+"   "+std::to_string(d->getValeur(2)[2]);
+    std::string bas = " "+std::to_string(d->getValeur(3)[2])+std::to_string(d->getValeur(3)[1])+std::to_string(d->getValeur(3)[0])+" ";
     
     one.setString(haut);
     two.setString(cote1);
