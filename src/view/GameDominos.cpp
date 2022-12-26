@@ -41,8 +41,8 @@ void GameDominos::init()
     pioche->init(*(contexte->font), current);
     pioche->myPosition(1000, 200);
 
-    Joueur j = *ctlr.getJoueurActuel();
-    std::string jou = "Joueur " + std::to_string(j.getId()) + " Score:" + std::to_string(j.getScore());
+    Joueur *j = ctlr.getJoueurActuel();
+    std::string jou = "Joueur " + std::to_string(j->getId()) + " Score:" + std::to_string(j->getScore());
     player.setString(jou);
     player.setCharacterSize(18);
     player.setFont(*(contexte->font));
@@ -122,7 +122,7 @@ void GameDominos::traitementInput()
                 break;
             case sf::Keyboard::Enter:
                 std::cout << std::to_string(x) << "," << std::to_string(y) << std::endl;
-                if (ctlr.jouer(x,y,current))
+                if (ctlr.jouer(x, y, current))
                 {
                     pioche->setGridPosition(x, y);
                     tuiles.push_back(pioche);
@@ -131,15 +131,28 @@ void GameDominos::traitementInput()
                     pioche = new SpriteDominos();
                     pioche->init(*(contexte->font), current);
                     pioche->myPosition(1000, 200);
+                    Joueur *j = ctlr.getJoueurActuel();
+                    std::string jou = "Joueur " + std::to_string(j->getId()) + " Score:" + std::to_string(j->getScore());
+                    player.setString(jou);
                 }
                 break;
             case sf::Keyboard::D:
                 ctlr.defausser();
                 delete pioche;
-                current = &ctlr.piocher();
-                pioche = new SpriteDominos();
-                pioche->init(*(contexte->font), current);
-                pioche->myPosition(1000, 200);
+                if (!ctlr.finDePartie())
+                {
+                    current = &ctlr.piocher();
+                    pioche = new SpriteDominos();
+                    pioche->init(*(contexte->font), current);
+                    pioche->myPosition(1000, 200);
+                    std::string jou = "Joueur " + std::to_string(ctlr.getJoueurActuel()->getId()) + " Score:" + std::to_string(ctlr.getJoueurActuel()->getScore());
+                    player.setString(jou);
+                }
+                else
+                {
+                    pioche=nullptr;
+                }
+
                 break;
 
             case sf::Keyboard::R:
@@ -160,7 +173,7 @@ void GameDominos::traitementInput()
 void GameDominos::dessine()
 {
     contexte->fenetre->clear();
-    pioche->draw(*(contexte->fenetre));
+    if(pioche!=nullptr)pioche->draw(*(contexte->fenetre));
     for (size_t i = 0; i < tuiles.size(); i++)
     {
         tuiles.at(i)->draw(*(contexte->fenetre));
@@ -177,4 +190,10 @@ void GameDominos::dessine()
 
 void GameDominos::maj()
 {
+    if(ctlr.finDePartie())
+    {
+        std::string s = "Joueur " + std::to_string(ctlr.getVainqueur().getId()) + " Score:" + std::to_string(ctlr.getVainqueur().getScore());
+        EndGame *m=new EndGame(contexte,s);
+        contexte->manageur->ajoute(*m,true);
+    }
 }

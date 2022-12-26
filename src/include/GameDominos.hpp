@@ -7,6 +7,7 @@
 #include <SFML/Window/Event.hpp>
 #include "SpriteDominos.hpp"
 #include <vector>
+#include "EndGame.hpp"
 
 class GameDominos:public Etat
 {
