@@ -7,7 +7,10 @@ ManageurEtat::ManageurEtat():mettre{false},retirer{false},remplacer{false}
 
 ManageurEtat::~ManageurEtat()
 {
-
+    while (!etats.empty())
+    {
+        etats.pop();
+    }
 }
 
 void ManageurEtat::ajoute(Etat &etat,bool remplace)
@@ -38,11 +41,8 @@ void ManageurEtat::change()
             etats.pop();
             remplacer=false;
         }
-        if(!etats.empty())
-            etats.top()->pause();
         etats.push(courant);
         etats.top()->init();
-        etats.top()->reprendre();
         mettre=false;
     }
 }

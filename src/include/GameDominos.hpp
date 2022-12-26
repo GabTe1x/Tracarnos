@@ -11,10 +11,22 @@
 class GameDominos:public Etat
 {
 private:
-    const float size_tuile = 100;
+    // contexte
     Contexte *contexte;
-    Controleur *ctlr;
-    std::vector <SpriteDominos> tuiles;
+    // controleur
+    Controleur ctlr;
+
+    // Texte + bordure menu 
+    sf::Text titre;
+    sf::RectangleShape border;
+    SpriteDominos *pioche;
+    sf::Text player;
+
+    // Dominos
+    std::vector<SpriteDominos*>tuiles;
+    Dominos *current;
+    sf::RectangleShape select;
+    int x,y;
 public:
     GameDominos(Contexte *obj,int j,int d);
     ~GameDominos();
