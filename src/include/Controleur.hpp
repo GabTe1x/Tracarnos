@@ -16,6 +16,7 @@ class Controleur {
     
     public:
         Controleur();
+        ~Controleur();
         /* initialise le modèle Dominos
         @param j = nombre de joueurs
         @param pioche = nombre de dominos*/
