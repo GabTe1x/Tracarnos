@@ -1,29 +1,64 @@
 CPP := g++ -Wall -std=c++11
 
-BIN		:= bin
-SRC		:= src
-HPP		:= src/hpp 
+VIEW	:= src/view/
+MODEL	:= src/model/
+CTRL	:= src/controleur/
+HPP		:= src/include/
 
 LIBRAIRIES	:= -lsfml-graphics -lsfml-window -lsfml-system
-EXECUTABLE	:= main
 
-MKDIR_P = mkdir -p
+CCO= $(CPP) -c $<
+OBJECTS= Test.o App.o GameDominos.o ManageurEtat.o EndGame.o Menu.o ParamDominos.o SpriteDominos.o Controleur.o ControleurTrax.o TuileTrax.o PlateauTrax.o Dominos.o Joueur.o PlateauDominos.o# liste des objets intermédiaires
 
-.PHONY: directories
+all : $(OBJECTS)
+	$(CPP) -o tracarnos $(OBJECTS) $(LIBRAIRIES)
+	./tracarnos
 
-all: directories $(BIN)/$(EXECUTABLE)
+Test.o : $(VIEW)Test.cpp $(HPP)App.hpp
+	$(CCO)
 
-directories: ${BIN}
+App.o : $(VIEW)App.cpp $(HPP)App.hpp
+	$(CCO)
 
-${BIN}:
-	${MKDIR_P} ${BIN}
+GameDominos.o : $(VIEW)GameDominos.cpp $(HPP)GameDominos.hpp
+	$(CCO)
 
-run: clean all
-	clear
-	./$(BIN)/$(EXECUTABLE)
+ManageurEtat.o : $(VIEW)ManageurEtat.cpp $(HPP)ManageurEtat.hpp
+	$(CCO)
 
-$(BIN)/$(EXECUTABLE): $(SRC)/cpp/*.cpp
-	$(CPP) -I$(HPP) $^ -o $@ $(LIBRAIRIES)
+EndGame.o : $(VIEW)EndGame.cpp $(HPP)EndGame.hpp
+	$(CCO)
+
+Menu.o : $(VIEW)Menu.cpp $(HPP)Menu.hpp
+	$(CCO)
+
+ParamDominos.o : $(VIEW)ParamDominos.cpp $(HPP)ParamDominos.hpp
+	$(CCO)
+
+SpriteDominos.o : $(VIEW)SpriteDominos.cpp $(HPP)SpriteDominos.hpp
+	$(CCO)
+
+Controleur.o : $(CTRL)Controleur.cpp $(HPP)Controleur.hpp
+	$(CCO)
+
+ControleurTrax.o : $(CTRL)ControleurTrax.cpp $(HPP)ControleurTrax.hpp
+	$(CCO)
+
+Dominos.o : $(MODEL)Dominos.cpp $(HPP)Dominos.hpp
+	$(CCO)
+
+Joueur.o : $(MODEL)Joueur.cpp $(HPP)Joueur.hpp
+	$(CCO)
+
+PlateauDominos.o : $(MODEL)PlateauDominos.cpp $(HPP)PlateauDominos.hpp
+	$(CCO)
+
+TuileTrax.o : $(MODEL)TuileTrax.cpp $(HPP)TuileTrax.hpp
+	$(CCO)
+
+PlateauTrax.o : $(MODEL)PlateauTrax.cpp $(HPP)PlateauTrax.hpp
+	$(CCO)
+
 
 clean:
-	-rm $(BIN)/*
+	rm -f *.o tracarnos
