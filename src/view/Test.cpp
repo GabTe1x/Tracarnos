@@ -6,7 +6,6 @@
 #include "../include/ControleurTrax.hpp"
 
 int main(){
-
     std::cout << "Dominos (1) ou Trax (2)?" << std::endl;
     int num;
     std::cin >> num;
@@ -57,21 +56,20 @@ int main(){
             }
             std::cout << "fin de partie" << std::endl;        
         }
-    }else{std::cout << "Graphique (1) ou Terminal (2)?" << std::endl;
+    }else{
+        std::cout << "Graphique (1) ou Terminal (2)?" << std::endl;
         std::cin >> num;
         if(num==1){
             App app{};
             app.run();
         }else{
-            int joueurs;
-            std::cout << "Nombre de joueurs?" << std::endl;
-            std::cin >> joueurs;
+            std::cout << "Trax ne se joue qu'a deux joueurs." << std::endl;
             int nbTrax;
             std::cout << "Nombre de Tuiles?" << std::endl;
             std::cin >> nbTrax;
             // int joueurs{2};int dominos{5};
             ControleurTrax ctrl;
-            ctrl.commencer(joueurs,nbTrax);
+            ctrl.commencer(nbTrax);
 
             while (!ctrl.finDePartie()){
                 TuileTrax d = ctrl.piocher();
@@ -106,9 +104,6 @@ int main(){
             }
             std::cout << "fin de partie" << std::endl;        
         }
-
-
-
     }
 }
 

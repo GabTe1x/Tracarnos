@@ -2,14 +2,16 @@
 
 ControleurTrax::ControleurTrax():plateau{}{};
 
-void ControleurTrax::commencer(int nbrJ,int pioche)
+
+
+void ControleurTrax::commencer(int pioche)
 {
     plateau=new PlateauTrax{};
 
-    nombreDeJoueurs=nbrJ; 
+    nombreDeJoueurs=2; 
 
     // initialisation des joueurs
-    for(int i =0;i< nbrJ;i++)
+    for(int i =0;i< 2;i++)
     {
         Joueur *player=new Joueur{i};
         plateau->ajouterJoueur(*player);
@@ -38,15 +40,26 @@ TuileTrax& ControleurTrax::piocher()
 }
  bool ControleurTrax::defausser(){
     return plateau->defausser();
- }
+}
+
+bool ControleurTrax::jouerCoupObligatoire(){
+    if (plateau->jouerCoupObligatoire()){
+        return true;
+    }else return false;
+
+}
 
 bool ControleurTrax::jouer(int x,int y, TuileTrax* d){
-    int ret=plateau->peutPoser(*d,x,y);
-    if(ret==-1)
-        return false;
-    plateau->getJoueur(tour%plateau->getNbrJoueurs())->addScore(ret);
-    plateau->defausser();
-    return true;
+    if (jouerCoupObligatoire()){
+        std::cout << "Un coup obligatoire a été jouer automatiquement" << std::endl;
+        plateau->defausser();
+        return true;
+    }else{
+        int ret=plateau->peutPoser(*d,x,y);
+        if(ret==-1) return false;
+        plateau->defausser();
+        return true;
+    }
 }
 
 PlateauTrax* ControleurTrax::getPlateau(){

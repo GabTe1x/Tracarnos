@@ -1,6 +1,121 @@
 #include "../include/PlateauTrax.hpp"
+#include <set>
 
 PlateauTrax::PlateauTrax(){}
+
+//Pose une tuile sur l'emplacement coord si c'est obligatoire
+bool PlateauTrax::verifCoupObligatoire(std::pair<int, int> coord){
+    int haut, droite, bas, gauche;
+
+    if (existeTuile(coord.first, coord.second+1)){
+        haut= tuiles[std::pair<int,int>(coord.first, coord.second+1)]->getValeur(3);
+    }else haut=2;
+    
+    if (existeTuile(coord.first+1, coord.second)){
+        droite= tuiles[std::pair<int,int>(coord.first+1, coord.second)]->getValeur(4);
+    }else droite=2;
+    
+    if (existeTuile(coord.first, coord.second-1)){
+        bas= tuiles[std::pair<int,int>(coord.first, coord.second-1)]->getValeur(1);
+    }else bas=2;
+    
+    if (existeTuile(coord.first-1, coord.second)){
+        gauche= tuiles[std::pair<int,int>(coord.first-1, coord.second)]->getValeur(2);
+    }else gauche=2;
+
+    if (haut != 2){
+        if (droite == haut){
+            TuileTrax* tuile= new TuileTrax( haut, haut, !haut, !haut);
+            this->tuiles[coord]=tuile;
+            return true;
+        }
+        else if (bas == haut){
+            TuileTrax* tuile= new TuileTrax( haut, !haut, haut, !haut);
+            this->tuiles[coord]=tuile;
+            return true;
+            
+        }
+        else if (gauche == haut){
+            TuileTrax* tuile= new TuileTrax( haut, !haut, !haut, haut);
+            this->tuiles[coord]=tuile;
+            return true;
+            
+        }
+    }
+
+    if (droite != 2){
+        if (bas == droite){
+            TuileTrax* tuile= new TuileTrax( !droite, droite, droite, !droite);
+            this->tuiles[coord]=tuile;
+            return true;
+            
+        }
+        else if (gauche == droite){
+            TuileTrax* tuile= new TuileTrax( !droite, droite, !droite, droite);
+            this->tuiles[coord]=tuile;
+            return true;
+            
+        }
+    }
+
+    if (bas != 2){
+        if (gauche == bas){
+            TuileTrax* tuile= new TuileTrax( !bas, !bas, bas, bas);
+            this->tuiles[coord]=tuile;
+            return true;  
+        }
+    } 
+    return false;   
+}
+
+
+
+
+//S'il existe un coup obligatoire, le joue et renvoie true
+bool PlateauTrax::jouerCoupObligatoire(){
+    //Repertorie les coordonnées déja vérifiées
+    std::set <std::pair<int, int>> dejaVerif; 
+    for(std::pair<std::pair<int, int>,TuileTrax*> it : tuiles){
+        std::pair<int, int> paire = it.first;
+        if(!existeTuile(paire.first+1, paire.second)){
+            std::pair<int, int> coord {paire.first+1, paire.second};
+            if ((dejaVerif).count(coord)!=1){
+                if (verifCoupObligatoire(coord)){
+                    return true;
+                }
+                dejaVerif.insert(coord);
+            }
+        }
+        if(!existeTuile(paire.first-1, paire.second)){
+            std::pair<int, int> coord {paire.first-1, paire.second};
+            if ((dejaVerif).count(coord)!=1){
+                if (verifCoupObligatoire(coord)){
+                    return true;
+                }
+                dejaVerif.insert(coord);
+            }
+        }
+        if(!existeTuile(paire.first, paire.second+1)){
+            std::pair<int, int> coord {paire.first, paire.second+1};
+            if ((dejaVerif).count(coord)!=1){
+                if (verifCoupObligatoire(coord)){
+                    return true;
+                }
+                dejaVerif.insert(coord);
+            }
+        }
+        if(!existeTuile(paire.first, paire.second-1)){
+            std::pair<int, int> coord {paire.first, paire.second-1};
+            if ((dejaVerif).count(coord)!=1){
+                if (verifCoupObligatoire(coord)){
+                    return true;
+                }
+                dejaVerif.insert(coord);
+            }
+        }
+    }
+    return false;
+}
 
 int PlateauTrax::peutPoser(TuileTrax & tuile, int x, int y)
 {

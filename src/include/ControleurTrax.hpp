@@ -17,13 +17,15 @@ class ControleurTrax {
         /* initialise le modèle Trax
         @param j = nombre de joueurs
         @param pioche = nombre de Trax*/
-        void commencer(int j,int pioche);
+        void commencer(int pioche);
 
         // vérifie si la partie est terminé
         bool finDePartie() const;
 
         // récupère le vainqueur
         Joueur& getVainqueur();
+
+        bool jouerCoupObligatoire();
         
         // @param x,y coordonnées ou poser la tuile courante
         // return -1 si tuile pas poser, 0 plus de tuile sinon 1
