@@ -8,7 +8,7 @@ HPP		:= src/include/
 LIBRAIRIES	:= -lsfml-graphics -lsfml-window -lsfml-system
 
 CCO= $(CPP) -c $<
-OBJECTS= Test.o App.o GameDominos.o ManageurEtat.o EndGame.o Menu.o ParamDominos.o SpriteDominos.o Controleur.o ControleurTrax.o TuileTrax.o PlateauTrax.o Dominos.o Joueur.o PlateauDominos.o# liste des objets intermédiaires
+OBJECTS= Test.o App.o GameDominos.o ManageurEtat.o EndGame.o Menu.o ParamDominos.o SpriteDominos.o Controleur.o ControleurTrax.o TuileTrax.o PlateauTrax.o ControleurCarca.o TuileCarca.o PlateauCarca.o Terrain.o Dominos.o Joueur.o PlateauDominos.o# liste des objets intermédiaires
 
 all : $(OBJECTS)
 	$(CPP) -o tracarnos $(OBJECTS) $(LIBRAIRIES)
@@ -44,6 +44,9 @@ Controleur.o : $(CTRL)Controleur.cpp $(HPP)Controleur.hpp
 ControleurTrax.o : $(CTRL)ControleurTrax.cpp $(HPP)ControleurTrax.hpp
 	$(CCO)
 
+ControleurCarca.o : $(CTRL)ControleurCarca.cpp $(HPP)ControleurCarca.hpp
+	$(CCO)
+
 Dominos.o : $(MODEL)Dominos.cpp $(HPP)Dominos.hpp
 	$(CCO)
 
@@ -57,6 +60,15 @@ TuileTrax.o : $(MODEL)TuileTrax.cpp $(HPP)TuileTrax.hpp
 	$(CCO)
 
 PlateauTrax.o : $(MODEL)PlateauTrax.cpp $(HPP)PlateauTrax.hpp
+	$(CCO)
+
+TuileCarca.o : $(MODEL)TuileCarca.cpp $(HPP)TuileCarca.hpp
+	$(CCO)
+
+PlateauCarca.o : $(MODEL)PlateauCarca.cpp $(HPP)PlateauCarca.hpp
+	$(CCO)
+
+Terrain.o : $(MODEL)Terrain.cpp $(HPP)Terrain.hpp
 	$(CCO)
 
 
