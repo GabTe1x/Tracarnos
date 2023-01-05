@@ -1,23 +1,23 @@
-#ifndef _CONTROLEURTRAX
-#define _CONTROLEURTRAX
+#ifndef _CONTROLEURCARCA
+#define _CONTROLEURCARCA
 
-#include "PlateauTrax.hpp"
+#include "PlateauCarca.hpp"
 #include "Joueur.hpp"
 #include <random>
 
     
-class ControleurTrax {
+class ControleurCarca {
     private:
-        PlateauTrax *plateau;
+        PlateauCarca *plateau;
         int tour =0; //Indique le joueur auquel c'est le tour de jouer
         int nombreDeJoueurs;
     
     public:
-        ControleurTrax();
-        /* initialise le modèle Trax
+        ControleurCarca();
+        /* initialise le modèle Carca
         @param j = nombre de joueurs
-        @param pioche = nombre de Trax*/
-        void commencer(int pioche);
+        @param pioche = nombre de Carca*/
+        void commencer(int pioche, int j);
 
         // vérifie si la partie est terminé
         bool finDePartie() const;
@@ -29,17 +29,17 @@ class ControleurTrax {
         
         // @param x,y coordonnées ou poser la tuile courante
         // return -1 si tuile pas poser, 0 plus de tuile sinon 1
-        bool jouer(int x,int y, TuileTrax* d);
+        bool jouer(int x,int y, TuileCarca* d);
 
         // récupère la tuile la plus haute de la pioche
-        TuileTrax& piocher();
+        TuileCarca& piocher();
 
         // permet de defausser la premiere tuile de la pioche
         bool defausser();
 
-        PlateauTrax* getPlateau();
+        PlateauCarca* getPlateau();
         Joueur* getJoueurActuel();
 };
-std::ostream& operator<<(std::ostream&, ControleurTrax&);
+std::ostream& operator<<(std::ostream&, ControleurCarca&);
 
-#endif //_CONTROLEURTRAX
+#endif //_CONTROLEURCarca
