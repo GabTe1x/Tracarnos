@@ -3,6 +3,7 @@
 
 #include "Etat.hpp"
 #include "ParamDominos.hpp"
+#include "GameTrax.hpp"
 
 class Menu:public Etat
 {

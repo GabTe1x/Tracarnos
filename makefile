@@ -20,6 +20,12 @@ Test.o : $(VIEW)Test.cpp $(HPP)App.hpp
 App.o : $(VIEW)App.cpp $(HPP)App.hpp
 	$(CCO)
 
+GameTrax.o : $(VIEW)GameTrax.cpp $(HPP)GameTrax.hpp
+	$(CCO)
+
+SpriteTrax.o : $(VIEW)SpriteTrax.cpp $(HPP)SpriteTrax.hpp
+	$(CCO)
+
 GameDominos.o : $(VIEW)GameDominos.cpp $(HPP)GameDominos.hpp
 	$(CCO)
 

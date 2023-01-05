@@ -83,7 +83,12 @@ void Menu::maj()
             ParamDominos *d=new ParamDominos(contexte);
             contexte->manageur->ajoute(*d);
         }
-        // TODO carcassonne et trax
+        if(curseur==1)
+        {
+            GameTrax *g=new GameTrax{contexte};
+            contexte->manageur->ajoute(*g);
+        }
+        // TODO carcassonne
     }
     switch (curseur)
     {
