@@ -32,9 +32,7 @@ void GameTrax::init()
     pioche->init();
     pioche->myPosition(1000, 200);
 
-    Joueur *j = ctlr.getJoueurActuel();
-    std::string jou = "Joueur " + std::to_string(j->getId()) + " Score:" + std::to_string(j->getScore());
-    player.setString(jou);
+    player.setString("Joueur noir");
     player.setCharacterSize(18);
     player.setFont(*(contexte->font));
     player.setPosition(sf::Vector2f(920, 120));
@@ -124,8 +122,10 @@ void GameTrax::traitementInput()
                     pioche->init();
                     pioche->myPosition(1000, 200);
                     Joueur *j = ctlr.getJoueurActuel();
-                    std::string jou = "Joueur " + std::to_string(j->getId()) + " Score:" + std::to_string(j->getScore());
-                    player.setString(jou);
+                    if(j->getId()==0)
+                        player.setString("Joueur noir");
+                    else
+                        player.setString("Joueur blanc");
                 }
                 break;
             case sf::Keyboard::S:
