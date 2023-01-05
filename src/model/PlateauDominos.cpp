@@ -43,9 +43,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
         estColle = true;
         if(tuile.correspond(tuiles[std::pair<int,int>(x,y+1)]->getValeur(3),1)){
             pts+=tuile.getScore(0);
-            std::cout << "dessus correspond" << std::endl;
         }else{ 
-            std::cout << "dessus say no" << std::endl;
             return -1;
         }
     }
@@ -55,9 +53,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
         estColle = true;
         if(tuile.correspond(tuiles[std::pair<int,int>(x+1,y)]->getValeur(4),2)){
             pts+=tuile.getScore(1);
-            std::cout << "droite correspond" << std::endl;
         }else{ 
-            std::cout << "droite say no" << std::endl;
             return -1;
         }
     }
@@ -67,9 +63,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
         estColle = true;
         if(tuile.correspond(tuiles[std::pair<int,int>(x,y-1)]->getValeur(1),3)){
             pts+=tuile.getScore(2);
-            std::cout << "dessous correspond" << std::endl;
         }else{ 
-            std::cout << "dessous say no" << std::endl;
             return -1;
         }
     }
@@ -79,9 +73,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
         estColle = true;
         if(tuile.correspond(tuiles[std::pair<int,int>(x-1,y)]->getValeur(2),4)){
             pts+=tuile.getScore(3);
-            std::cout << "gauche correspond" << std::endl;
         }else{ 
-            std::cout << "gauche say no" << std::endl;
             return -1;
 
         }
@@ -92,9 +84,7 @@ int PlateauDominos::peutPoser(Dominos & tuile, int x, int y)
         this->tuiles[coord]=&tuile;
         defausser();
         return pts;
-        std::cout << "tuile placée" << std::endl;
     }
-    std::cout << "estColle say no" << std::endl;
     return -1;
 }
 

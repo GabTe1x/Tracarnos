@@ -24,8 +24,6 @@ class ControleurCarca {
 
         // récupère le vainqueur
         Joueur& getVainqueur();
-
-        bool jouerCoupObligatoire();
         
         // @param x,y coordonnées ou poser la tuile courante
         // return -1 si tuile pas poser, 0 plus de tuile sinon 1

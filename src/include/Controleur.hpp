@@ -11,8 +11,6 @@ class Controleur {
         PlateauDominos *plateau;
         int tour =0; //Indique le joueur auquel c'est le tour de jouer
         int nombreDeJoueurs;
-        int x=5;
-        int y=5;
     
     public:
         Controleur();

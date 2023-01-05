@@ -266,13 +266,11 @@ int PlateauTrax::peutPoser(TuileTrax &tuile, int x, int y) {
     this->tuiles[coord] = &tuile;
     defausser();
     return 1;
-    std::cout << "tuile placée sur plateau vide" << std::endl;
   }
 
   // Si le plateau n'est pas vide
   // S'il y a deja une tuile sur la case (x, y)
   if (existeTuile(x, y)) {
-    std::cout << "Il existe déjà une tuile sur cet emplacement" << std::endl;
     return -1;
   }
 
@@ -330,9 +328,7 @@ int PlateauTrax::peutPoser(TuileTrax &tuile, int x, int y) {
     this->tuiles[coord] = &tuile;
     defausser();
     return 1;
-    std::cout << "tuile placée" << std::endl;
   }
-  std::cout << "estColle say no" << std::endl;
   return -1;
 }
 
