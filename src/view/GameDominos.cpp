@@ -176,6 +176,8 @@ void GameDominos::dessine()
     if(pioche!=nullptr)pioche->draw(*(contexte->fenetre));
     for (size_t i = 0; i < tuiles.size(); i++)
     {
+        if(tuiles.at(i)->getX()<this->x+5 && tuiles.at(i)->getX()>this->x-5 
+        && tuiles.at(i)->getY()<this->y+3 && tuiles.at(i)->getY()>this->y-4)
         tuiles.at(i)->draw(*(contexte->fenetre));
     }
     contexte->fenetre->draw(titre);

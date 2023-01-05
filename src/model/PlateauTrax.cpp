@@ -41,15 +41,15 @@ bool PlateauTrax::gagne(bool n) {
   std::set<std::pair<int, int>> dejaVerif;
 
   for (std::pair<std::pair<int, int>, TuileTrax *> it : tuiles) {
-    std::cout << it.first.first << " " << it.first.second << " dans le FOR"
-              << std::endl;
+    /*std::cout << it.first.first << " " << it.first.second << " dans le FOR"
+              << std::endl;*/
     std::set<std::pair<int, int>> boucle;
     if ((dejaVerif).count(it.first) != 1) {
       int coteEntrant = getEntrant(it.second, n);
       int x = it.first.first;
       int y = it.first.second;
-      int taillex = 0;
-      int tailley = 0;
+      int taillex = 1;
+      int tailley = 1;
       bool isNext = true;
 
 

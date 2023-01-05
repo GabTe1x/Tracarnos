@@ -30,6 +30,7 @@ private:
     TuileTrax *current;   
     sf::RectangleShape select;
     int x,y;
+    bool check=false;
 public:
     GameTrax(Contexte *obj);
     ~GameTrax();

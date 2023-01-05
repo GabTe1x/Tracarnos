@@ -111,7 +111,7 @@ void GameTrax::traitementInput()
                 break;
             case sf::Keyboard::Enter:
                 std::cout << std::to_string(x) << "," << std::to_string(y) << std::endl;
-                std::cout<<*current;
+                std::cout << *current;
                 if (ctlr.jouer(x, y, current))
                 {
                     pioche->setGridPosition(x, y);
@@ -122,21 +122,22 @@ void GameTrax::traitementInput()
                     pioche->init();
                     pioche->myPosition(1000, 200);
                     Joueur *j = ctlr.getJoueurActuel();
-                    if(j->getId()==0)
+                    if (j->getId() == 0)
                         player.setString("Joueur noir");
                     else
                         player.setString("Joueur blanc");
                 }
+                check=true;
                 break;
             case sf::Keyboard::S:
                 current->retourner();
                 pioche->switchSide(current);
-                std::cout<<*current;
+                std::cout << *current;
                 break;
             case sf::Keyboard::R:
                 current->tourne();
                 pioche->rotate();
-                std::cout<<*current;
+                std::cout << *current;
                 break;
             default:
                 break;
@@ -152,10 +153,12 @@ void GameTrax::traitementInput()
 void GameTrax::dessine()
 {
     contexte->fenetre->clear();
-    if(pioche!=nullptr)pioche->draw(*(contexte->fenetre));
+    if (pioche != nullptr)
+        pioche->draw(*(contexte->fenetre));
     for (size_t i = 0; i < tuiles.size(); i++)
     {
-        tuiles.at(i)->draw(*(contexte->fenetre));
+        if (tuiles.at(i)->getX() < this->x + 5 && tuiles.at(i)->getX() > this->x - 5 && tuiles.at(i)->getY() < this->y + 3 && tuiles.at(i)->getY() > this->y - 4)
+            tuiles.at(i)->draw(*(contexte->fenetre));
     }
     contexte->fenetre->draw(titre);
     contexte->fenetre->draw(player);
@@ -169,10 +172,14 @@ void GameTrax::dessine()
 
 void GameTrax::maj()
 {
-    if(ctlr.finDePartie())
+    if (check)
     {
-        std::string s = "Joueur " + std::to_string(ctlr.getVainqueur().getId()) + " Score:" + std::to_string(ctlr.getVainqueur().getScore());
-        EndGame *m=new EndGame(contexte,s);
-        contexte->manageur->ajoute(*m,true);
+        if (ctlr.finDePartie())
+        {
+            std::string s = "Joueur " + std::to_string(ctlr.getVainqueur().getId()) + " Score:" + std::to_string(ctlr.getVainqueur().getScore());
+            EndGame *m = new EndGame(contexte, s);
+            contexte->manageur->ajoute(*m, true);
+        }
+        check = false;
     }
 }

@@ -56,12 +56,14 @@ bool ControleurTrax::jouer(int x,int y, TuileTrax* d){
     if (jouerCoupObligatoire()){
         std::cout << "Un coup obligatoire a été jouer automatiquement" << std::endl;
         plateau->defausser();
+        tour++;
         return true;
     }else{
         std::cout << "Pas de cout obligatoire" << std::endl;
         int ret=plateau->peutPoser(*d,x,y);
         if(ret==-1) return false;
         plateau->defausser();
+        tour++;
         return true;
     }
 }

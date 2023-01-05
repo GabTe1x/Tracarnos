@@ -60,9 +60,9 @@ bool Controleur::jouer(int x,int y, Dominos* d){
     int ret=plateau->peutPoser(*d,x,y);
     if(ret==-1)
         return false;
-    tour++;
     plateau->getJoueur(tour%plateau->getNbrJoueurs())->addScore(ret);
     plateau->defausser();
+    tour++;
     return true;
 }
 
