@@ -43,9 +43,6 @@ void ParamDominos::traitementInput()
 
             switch (event.key.code)
             {
-            case sf::Keyboard::Escape:
-                escape=true;
-                break;
             case sf::Keyboard::Up:
                 curseur-=1;
                 if(curseur<0)
@@ -111,10 +108,6 @@ void ParamDominos::maj()
         GameDominos *d=new GameDominos(contexte,n_joueurs,n_dominos);
         contexte->manageur->ajoute(*d);
         entree=false;
-    }
-    if(escape)
-    {
-        contexte->manageur->change();
     }
     if(curseur==0){
         std::string s = "Nombre de dominos  < "+std::to_string(n_dominos)+" >";

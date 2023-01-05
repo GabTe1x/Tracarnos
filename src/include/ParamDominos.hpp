@@ -16,7 +16,6 @@ private:
     sf::Text slcJoueurs;
     sf::Text dominos;
     bool entree=false;
-    bool escape=false;
     int curseur=0;
 public:
     ParamDominos(Contexte *obj);
