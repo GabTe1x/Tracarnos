@@ -9,10 +9,11 @@ bool Plateau<T>::existeTuile(int x, int y)const
 {
     std::pair<int, int> coord {x, y};
     if ((this->tuiles).count(coord)==1){
-        std::cout << coord.first << " " << coord.second << " est deja occupé" << std::endl;
         return true;
 
-    }else return false;
+    }else {
+        return false;
+}
 }
 
 template <typename T>

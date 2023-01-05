@@ -23,7 +23,7 @@ void ControleurTrax::commencer(int pioche)
     // initialisation de la pioche de TuileTrax
     for(int cmpt =0;cmpt <= pioche;cmpt++)
     {
-        TuileTrax *d=new TuileTrax{true,false,true,false};
+        TuileTrax *d = new TuileTrax{true,false,true,false};
         plateau->ajouteTuileDsPioche(*d);
     }
 }
