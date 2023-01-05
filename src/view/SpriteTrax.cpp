@@ -14,7 +14,7 @@ void SpriteTrax::init()
     {
         std::cout << "Error couldn't load texture" << std::endl;
     }
-    side = false;
+    side = true;
     texture.setTexture(front);
     texture.setScale(0.0488, 0.0488);
 }
@@ -32,12 +32,24 @@ void SpriteTrax::switchSide(TuileTrax *t)
         side = false;
         texture.setTexture(back);
         texture.setScale(0.083,0.083);
+        texture.setRotation(0);
+        if(!t->getValeur(3))
+        {
+            texture.rotate(90);
+            myPosition(pos.x,pos.y);
+        }else
+        {
+            texture.rotate(270);
+            myPosition(pos.x,pos.y);
+        }
     }
     else
     {
         side = true;
         texture.setTexture(front);
         texture.setScale(0.0488, 0.0488);
+        texture.setRotation(0);
+        myPosition(pos.x,pos.y);
     }
 }
 

@@ -32,9 +32,7 @@ void GameTrax::init()
     pioche->init();
     pioche->myPosition(1000, 200);
 
-    Joueur *j = ctlr.getJoueurActuel();
-    std::string jou = "Joueur " + std::to_string(j->getId()) + " Score:" + std::to_string(j->getScore());
-    player.setString(jou);
+    player.setString("Joueur noir");
     player.setCharacterSize(18);
     player.setFont(*(contexte->font));
     player.setPosition(sf::Vector2f(920, 120));
@@ -113,6 +111,7 @@ void GameTrax::traitementInput()
                 break;
             case sf::Keyboard::Enter:
                 std::cout << std::to_string(x) << "," << std::to_string(y) << std::endl;
+                std::cout<<*current;
                 if (ctlr.jouer(x, y, current))
                 {
                     pioche->setGridPosition(x, y);
@@ -123,17 +122,21 @@ void GameTrax::traitementInput()
                     pioche->init();
                     pioche->myPosition(1000, 200);
                     Joueur *j = ctlr.getJoueurActuel();
-                    std::string jou = "Joueur " + std::to_string(j->getId()) + " Score:" + std::to_string(j->getScore());
-                    player.setString(jou);
+                    if(j->getId()==0)
+                        player.setString("Joueur noir");
+                    else
+                        player.setString("Joueur blanc");
                 }
                 break;
             case sf::Keyboard::S:
                 current->retourner();
                 pioche->switchSide(current);
+                std::cout<<*current;
                 break;
             case sf::Keyboard::R:
                 current->tourne();
                 pioche->rotate();
+                std::cout<<*current;
                 break;
             default:
                 break;
