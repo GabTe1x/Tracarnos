@@ -18,6 +18,7 @@ class ControleurTrax {
         @param j = nombre de joueurs
         @param pioche = nombre de Trax*/
         void commencer(int pioche);
+        void commencer(int j, int pioche);
 
         // vérifie si la partie est terminé
         bool finDePartie() const;

@@ -68,9 +68,6 @@ bool PlateauTrax::verifCoupObligatoire(std::pair<int, int> coord){
     return false;   
 }
 
-
-
-
 //S'il existe un coup obligatoire, le joue et renvoie true
 bool PlateauTrax::jouerCoupObligatoire(){
     //Repertorie les coordonnées déja vérifiées
@@ -122,10 +119,10 @@ int PlateauTrax::peutPoser(TuileTrax & tuile, int x, int y)
     //Si le plateau est vide
     std::pair<int, int> coord (x, y);
     if (tuiles.empty()){
+        this->tuiles[coord]=&tuile;
         defausser();
-        tuiles[coord]=&tuile;
-        std::cout << "Tuile placée sur plateau vide" << std::endl;
-        return 0;
+        return 1;
+        std::cout << "tuile placée sur plateau vide" << std::endl;
     }
     
     //Si le plateau n'est pas vide

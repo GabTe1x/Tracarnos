@@ -8,7 +8,7 @@ HPP		:= src/include/
 LIBRAIRIES	:= -lsfml-graphics -lsfml-window -lsfml-system
 
 CCO= $(CPP) -c $<
-OBJECTS= Test.o App.o GameDominos.o ManageurEtat.o EndGame.o Menu.o ParamDominos.o SpriteDominos.o Controleur.o ControleurTrax.o TuileTrax.o PlateauTrax.o ControleurCarca.o TuileCarca.o PlateauCarca.o Terrain.o Dominos.o Joueur.o PlateauDominos.o# liste des objets intermédiaires
+OBJECTS= Test.o App.o GameDominos.o ManageurEtat.o EndGame.o Menu.o ParamDominos.o SpriteDominos.o Controleur.o ControleurTrax.o TuileTrax.o PlateauTrax.o ControleurCarca.o TuileCarca.o PlateauCarca.o Terrain.o Dominos.o Joueur.o PlateauDominos.o GameTrax.o SpriteTrax.o # liste des objets intermédiaires
 
 all : $(OBJECTS)
 	$(CPP) -o tracarnos $(OBJECTS) $(LIBRAIRIES)

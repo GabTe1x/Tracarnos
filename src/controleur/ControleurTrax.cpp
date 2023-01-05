@@ -2,7 +2,10 @@
 
 ControleurTrax::ControleurTrax():plateau{}{};
 
-
+void ControleurTrax::commencer(int j, int pioche){
+    commencer(pioche);
+    //Le jeux ne se joue qu'a deux
+}
 
 void ControleurTrax::commencer(int pioche)
 {
@@ -55,6 +58,7 @@ bool ControleurTrax::jouer(int x,int y, TuileTrax* d){
         plateau->defausser();
         return true;
     }else{
+        std::cout << "Pas de cout obligatoire" << std::endl;
         int ret=plateau->peutPoser(*d,x,y);
         if(ret==-1) return false;
         plateau->defausser();
