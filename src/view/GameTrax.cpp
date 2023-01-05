@@ -113,6 +113,7 @@ void GameTrax::traitementInput()
                 break;
             case sf::Keyboard::Enter:
                 std::cout << std::to_string(x) << "," << std::to_string(y) << std::endl;
+                std::cout<<*current;
                 if (ctlr.jouer(x, y, current))
                 {
                     pioche->setGridPosition(x, y);
@@ -130,10 +131,12 @@ void GameTrax::traitementInput()
             case sf::Keyboard::S:
                 current->retourner();
                 pioche->switchSide(current);
+                std::cout<<*current;
                 break;
             case sf::Keyboard::R:
                 current->tourne();
                 pioche->rotate();
+                std::cout<<*current;
                 break;
             default:
                 break;
